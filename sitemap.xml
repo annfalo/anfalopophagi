@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://github.com/anfalopophagi/sitemap/0.3">
+    <url>
+        <loc>https://github.com/anfalopophagi/</loc>
+
+        <lastmod>2025-03-12</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://github.com/anfalopophagi/painting.html</loc>
+
+        <lastmod>2025-03-12</lastmod>
+        <priority>0.8</priority>
+    </url>
+     <url>
+        <loc>https://github.com/anfalopophagi/contact.html</loc>
+
+        <lastmod>2025-03-12</lastmod>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

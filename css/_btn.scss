@@ -1,0 +1,15 @@
+    @mixin btn {
+        display: inline-block;
+        margin-top: 2rem;
+        font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
+        padding: 3rem 5rem;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: .2rem;
+        background: url(../icon/tag5.png) no-repeat center center/cover;
+        transform: rotate(-2deg);
+
+        @media screen and (max-width: 768px) {
+            padding: 3rem;
+        }
+    }

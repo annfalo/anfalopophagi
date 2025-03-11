@@ -1,0 +1,1271 @@
+@charset "UTF-8";
+body {
+  --sb-track-color: #F5F5F7;
+  --sb-thumb-color: #E94F17;
+  --sb-size: 15px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 17px;
+  border: 1px solid #232E33;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+/*///////////////////////////
+全体設定
+///////////////////////////*/
+:root {
+  --yellow: #f6ea25;
+  --blue: #0081AA;
+  --red: #E94F17;
+  --light-gray: #e0e0e0;
+  --gray: #F5F5F7;
+  --dark-gray: #8a8a91;
+  --black: #030201;
+  --white: #fff;
+  --font-jp: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-en: "Hind", "Helvetica", "Arial", sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: var(--gray);
+  -webkit-font-feature-settings: "palt";
+          font-feature-settings: "palt";
+  font-family: var(--font-jp);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--black);
+  overflow-x: hidden;
+  letter-spacing: 1.3px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.inner {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: clamp(0.875rem, 0.786rem + 0.45vw, 1rem);
+  }
+}
+/* ===============================================
+# ヘッダー
+=============================================== */
+header {
+  /* ===============================================
+  # トップへ戻る
+  =============================================== */
+}
+header .gnav-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 9999;
+  background-color: transparent;
+  height: 75px;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+header .gnav-wrapper.open {
+  height: 100vh;
+  background: url(../icon/sky.jpg) no-repeat center center/cover;
+}
+header .gnav-wrapper h1 {
+  width: 22vw;
+  position: relative;
+  max-width: 250px;
+  padding-left: 1rem;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper h1 {
+    width: 120px;
+  }
+}
+header .gnav-wrapper h1 span {
+  position: absolute;
+  font-size: 8px;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper h1 span {
+    font-size: 5px;
+  }
+}
+header .gnav-wrapper .gnav-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3rem;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .gnav-icon {
+    gap: 1.5rem;
+    height: 70px;
+  }
+}
+header .gnav-wrapper .instagram,
+header .gnav-wrapper .contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 5px;
+}
+header .gnav-wrapper .instagram img,
+header .gnav-wrapper .contact img {
+  width: 7vmin;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .instagram img,
+  header .gnav-wrapper .contact img {
+    width: 10vmin;
+  }
+}
+header .gnav-wrapper .instagram p,
+header .gnav-wrapper .contact p {
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: -0.2rem;
+}
+header .gnav-wrapper .hamburger {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  width: 60px;
+  cursor: pointer;
+  padding-top: 15px;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .hamburger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+header .gnav-wrapper .hamburger span {
+  display: block;
+  width: 40px;
+  height: 4px;
+  background-color: var(--black);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+header .gnav-wrapper .hamburger.open span:nth-child(1) {
+  -webkit-transform: translateY(9px) rotate(135deg);
+          transform: translateY(9px) rotate(135deg);
+}
+header .gnav-wrapper .hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+header .gnav-wrapper .hamburger.open span:nth-child(3) {
+  -webkit-transform: translateY(-9px) rotate(-135deg);
+          transform: translateY(-9px) rotate(-135deg);
+}
+header .gnav-wrapper .hamburger .menu-text {
+  font-size: 10px;
+  word-break: keep-all;
+  font-weight: bold;
+}
+header .gnav-wrapper .gnav-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--font-en);
+  padding: 1rem;
+  cursor: pointer;
+}
+header .gnav-wrapper .gnav-logo img {
+  width: 50px;
+}
+header .gnav-wrapper .gnav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  word-break: keep-all;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .gnav-list {
+    display: none;
+    gap: 8vh;
+    margin-bottom: 5vh;
+  }
+  header .gnav-wrapper .gnav-list.open {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+}
+header .gnav-wrapper .gnav-list a {
+  height: 75px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 0.431rem + 0.93vw, 1.125rem);
+  letter-spacing: 0.15rem;
+  font-family: var(--font-en);
+  padding: 1rem;
+  border-left: 1px solid var(--black);
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .gnav-list a {
+    border: none;
+    font-size: 40px;
+    width: 60vw;
+    margin: 0 auto;
+  }
+}
+header .gnav-wrapper .gnav-list a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .gnav-list a:before {
+    width: 200vw;
+    margin-left: -50vw;
+    -webkit-transform-origin: center;
+            transform-origin: center;
+  }
+}
+header .gnav-wrapper .gnav-list a:hover::before {
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .gnav-list a:hover::before {
+    width: 200vw;
+  }
+}
+header .gnav-wrapper .gnav-list a span {
+  font-size: 12px;
+  margin-bottom: -0.5rem;
+  font-weight: normal;
+  font-family: var(--font-jp);
+}
+header .gnav-wrapper .gnav-list .preparing {
+  position: relative;
+}
+header .gnav-wrapper .gnav-list .preparing:before {
+  content: "";
+  position: absolute;
+  background-color: var(--black);
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+header .gnav-wrapper .gnav-list .preparing:after {
+  content: "開発中";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: var(--white);
+  z-index: 9;
+  font-weight: 200;
+  letter-spacing: 4px;
+}
+@media screen and (max-width: 768px) {
+  header .gnav-wrapper .gnav-list .preparing {
+    width: 100vw;
+  }
+}
+header .to-top {
+  position: fixed;
+  text-align: center;
+  bottom: 20px;
+  right: 20px;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  z-index: 9999;
+  background: url(../icon/kurukuru2.png) no-repeat center center/contain;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+header .to-top:hover {
+  background: url(../icon/kurukuru.png) no-repeat center center/contain;
+}
+@media screen and (max-width: 768px) {
+  header .to-top {
+    height: 80px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+/* ===============================================
+# mimizu
+=============================================== */
+.mimizu {
+  background: url(../icon/mimizu1.png) no-repeat center center/contain;
+  width: 20vw;
+  height: 15vw;
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .mimizu {
+    height: 20vh;
+    width: 30vw;
+  }
+}
+
+/* ===============================================
+# トップ
+=============================================== */
+#top {
+  position: fixed;
+  left: 0;
+  z-index: -1;
+  margin-top: 75px;
+  background: url(../icon/sky.jpg) no-repeat center center/cover;
+}
+#top .kv-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+#top .kv-wrapper .kv-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#top .kv-wrapper .kv-item li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  -o-object-position: center;
+     object-position: center;
+}
+
+/* ===============================================
+# すべてを見る
+=============================================== */
+.all-view {
+  -webkit-transform: translateX(-50vw);
+          transform: translateX(-50vw);
+  background: url(../icon/kami.png) no-repeat center center/contain;
+  background-position: 65% center;
+  padding: 120px;
+}
+@media screen and (min-width: 1200px) {
+  .all-view {
+    padding: 150px;
+    background-position: 55% center;
+  }
+}
+.all-view img {
+  width: 20vw;
+  max-width: 200px;
+}
+@media screen and (max-width: 768px) {
+  .all-view img {
+    width: 90%;
+    max-width: inherit;
+  }
+}
+
+.see-all {
+  position: relative;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+@media screen and (max-width: 768px) {
+  .see-all {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.see-all span {
+  margin-right: 2.3rem;
+  color: var(--dark-gray);
+}
+@media screen and (max-width: 768px) {
+  .see-all span {
+    font-size: 12px;
+  }
+}
+.see-all:hover {
+  opacity: 0.6;
+}
+@media screen and (max-width: 768px) {
+  .see-all:hover {
+    opacity: 1;
+  }
+}
+.see-all:before {
+  content: "";
+  position: absolute;
+  top: calc(180% - 3.5px);
+  right: -50px;
+  width: 30px;
+  height: 18px;
+  border-right: 3px solid currentColor;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: right 0.5s ease, -webkit-transform 0.5s ease;
+  transition: right 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, right 0.5s ease;
+  transition: transform 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;
+}
+@media screen and (max-width: 768px) {
+  .see-all:before {
+    top: calc(120% - 3.5px);
+    right: -20%;
+  }
+}
+.see-all:after {
+  content: "";
+  position: absolute;
+  top: 180%;
+  right: -50px;
+  width: 80px;
+  height: 3px;
+  background-color: currentColor;
+  -webkit-transition: right 0.5s ease, -webkit-transform 0.5s ease;
+  transition: right 0.5s ease, -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, right 0.5s ease;
+  transition: transform 0.5s ease, right 0.5s ease, -webkit-transform 0.5s ease;
+}
+@media screen and (max-width: 768px) {
+  .see-all:after {
+    top: 120%;
+    right: -20%;
+  }
+}
+.see-all:hover::after {
+  right: -100px;
+}
+@media screen and (max-width: 768px) {
+  .see-all:hover::after {
+    right: -20%;
+  }
+}
+.see-all:hover::before {
+  right: -100px;
+}
+@media screen and (max-width: 768px) {
+  .see-all:hover::before {
+    right: -20%;
+  }
+}
+
+/* ===============================================
+# ファンシー
+=============================================== */
+/* すべてのファンシーボックスのボタンを大きくする */
+.fancybox-button:hover {
+  color: var(--red);
+}
+
+/* ===============================================
+# セクション共通
+=============================================== */
+#Artworks,
+#Drawings,
+#omen,
+#external,
+#contact {
+  background: var(--gray);
+  margin: 30vh 2rem 0;
+  padding-bottom: 12vh;
+  text-align: center;
+  border-radius: 18px;
+}
+@media (max-width: 719px) {
+  #Artworks,
+  #Drawings,
+  #omen,
+  #external,
+  #contact {
+    margin: 30vh 0;
+  }
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 50px;
+  font-weight: 600;
+  padding: 3rem;
+  letter-spacing: 0.2rem;
+  -webkit-transform: rotate(3deg);
+          transform: rotate(3deg);
+  width: 50vw;
+  margin: 0 auto;
+  max-width: 420px;
+}
+@media (max-width: 719px) {
+  .title {
+    width: 88vw;
+  }
+}
+.title span {
+  font-size: 20px;
+  margin-bottom: -0.5rem;
+  color: var(--blue);
+  font-weight: 400;
+}
+
+.card-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3vw;
+  margin-bottom: 100px;
+  padding: 1rem;
+}
+@media (max-width: 719px) {
+  .card-wrapper {
+    padding: 0;
+  }
+}
+.card-wrapper .card {
+  position: relative;
+  padding: 2vw;
+  width: 300px;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border-bottom: 1px solid var(--light-gray);
+  border-right: 1px solid var(--light-gray);
+}
+@media (max-width: 719px) {
+  .card-wrapper .card {
+    margin-bottom: 50px;
+  }
+}
+.card-wrapper .card img {
+  position: relative;
+}
+.card-wrapper .card img:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+.card-wrapper .card h3 {
+  margin-left: -1.8rem;
+}
+.card-wrapper .card .year {
+  font-size: 14px;
+  margin-left: -2rem;
+}
+@media screen and (max-width: 768px) {
+  .card-wrapper .card .year {
+    font-size: 12px;
+  }
+}
+.card-wrapper .new-tag {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  padding: 2rem;
+  background: url(../icon/tag3.png) no-repeat center center/contain;
+  font-style: italic;
+  font-weight: bold;
+  color: var(--white);
+  z-index: 80;
+  -webkit-animation: guruguru 8s linear infinite;
+          animation: guruguru 8s linear infinite;
+}
+
+/* ===============================================
+# アートワーク
+=============================================== */
+.main #Artworks {
+  margin-top: 100vh;
+}
+@media screen and (max-width: 768px) {
+  .main #Artworks {
+    margin-top: 50vh;
+  }
+}
+
+.tekuteku {
+  margin: 50px -2rem 0;
+  width: 100vw;
+  height: 15vmax;
+  -webkit-animation: tekuteku 1s steps(1) infinite;
+          animation: tekuteku 1s steps(1) infinite;
+}
+
+/* ===============================================
+# ドローイング
+=============================================== */
+#Drawings h3 {
+  margin: 0 auto;
+}
+
+/* ===============================================
+# お面
+=============================================== */
+#omen .card-wrapper .card .omen-img {
+  width: 30vw;
+  height: 30vh;
+  margin-left: -5vw;
+}
+@media screen and (max-width: 768px) {
+  #omen .card-wrapper .card .omen-img {
+    margin-left: 0;
+    width: 250px;
+  }
+}
+#omen .card-wrapper .card .toubu {
+  -webkit-animation: toubu 0.5s steps(1) infinite;
+          animation: toubu 0.5s steps(1) infinite;
+}
+#omen .card-wrapper .card .yellow {
+  -webkit-animation: yellow 0.7s steps(1) infinite;
+          animation: yellow 0.7s steps(1) infinite;
+  width: 35vw;
+}
+#omen .card-wrapper .card .tengu {
+  -webkit-animation: tengu 0.6s steps(1) infinite;
+          animation: tengu 0.6s steps(1) infinite;
+}
+
+/* ===============================================
+コンタクト
+=============================================== */
+#contact dl {
+  border: 2px solid var(--dark-gray);
+  width: 80vw;
+  padding: 1.8rem;
+  margin: 10vh auto;
+  text-align: center;
+}
+#contact dl dt {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+#contact dl .btn {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
+  padding: 3rem 5rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  background: url(../icon/tag5.png) no-repeat center center/cover;
+  -webkit-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  #contact dl .btn {
+    padding: 3rem;
+  }
+}
+#contact dl .btn .underline {
+  position: absolute;
+  bottom: 28%;
+  left: 15%;
+  width: 8px;
+  height: 8px;
+  background-color: var(--red);
+}
+#contact dl .btn:hover {
+  -webkit-animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+          animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+/* ===============================================
+# 別サイトリンク
+=============================================== */
+.external-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5vw;
+}
+.external-wrapper .external-site {
+  width: 80vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.external-wrapper .external-site img {
+  margin: 10vh 0 1rem;
+  max-width: 1000px;
+}
+.external-wrapper .external-site img:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+.external-wrapper .external-site h4 {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5rem 0 1rem;
+  border: 1px solid var(--black);
+  background-color: var(--yellow);
+  padding: 0.5rem 1.3rem;
+  border-radius: 50px;
+}
+
+/* ===============================================
+# フッター
+=============================================== */
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+.hituji {
+  background: url(../icon/hituji.png) no-repeat center center/contain;
+  width: auto;
+  height: 28vw;
+  margin: 0 auto;
+  -webkit-animation: hituji 1s steps(1) infinite;
+          animation: hituji 1s steps(1) infinite;
+}
+@media screen and (max-width: 768px) {
+  .hituji {
+    height: 28vh;
+  }
+}
+
+/* ===============================================
+# キャンバス
+=============================================== */
+.oekaki {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 50px;
+}
+.oekaki #canvas {
+  border: 1px solid var(--black);
+  background-color: rgba(255, 255, 255, 0.35);
+}
+.oekaki .tools {
+  width: 802px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--blue);
+  padding: 10px 30px;
+}
+@media screen and (max-width: 800px) {
+  .oekaki .tools {
+    width: 100vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 30px;
+  }
+}
+.oekaki .tools .shapes-wrapper {
+  gap: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.oekaki .tools .shapes-wrapper #rectangle {
+  width: 65px;
+  height: 50px;
+  background-color: var(--yellow);
+}
+.oekaki .tools .shapes-wrapper #circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: var(--red);
+}
+.oekaki .tools .shapes-wrapper #triangle {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid var(--white);
+}
+.oekaki .tools .shapes-wrapper #pen {
+  width: 65px;
+  height: 60px;
+  background: url(../icon/pen.png) no-repeat center center/contain;
+}
+.oekaki .tools .input-wrapper {
+  gap: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.oekaki .tools .input-wrapper input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 300px;
+  height: 8px;
+  background: var(--gray);
+  border-radius: 5px;
+}
+.oekaki .tools .input-wrapper input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background: url(../icon/yagihead1.webp) no-repeat center center/contain;
+}
+.oekaki .tools .input-wrapper input[type=range]::-moz-range-thumb {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background: url(../icon/yagihead1.webp) no-repeat center center/contain;
+}
+.oekaki .tools .input-wrapper input[type=range]::-ms-thumb {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background: url(../icon/yagihead1.webp) no-repeat center center/contain;
+}
+.oekaki .btn-wrapper {
+  margin: 1rem;
+}
+.oekaki .btn-wrapper #clear,
+.oekaki .btn-wrapper #save {
+  background-color: var(--gray);
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--black);
+}
+
+/* ===============================================
+# 絵のページ
+=============================================== */
+.painting #Artworks {
+  margin-top: 75px;
+}
+.painting #Artworks .card-wrapper .card {
+  border: none;
+  gap: 2vw;
+}
+.painting #Artworks .card-wrapper .card img {
+  max-height: 300px;
+}
+.painting #Artworks .card-wrapper .card h3 {
+  font-size: 14px;
+  margin-left: initial;
+  margin-top: 1rem;
+}
+.painting #Artworks .card-wrapper .card .year {
+  font-size: 12px;
+  margin-left: initial;
+}
+@media screen and (max-width: 768px) {
+  .painting #Artworks .card-wrapper .card .new-tag {
+    left: -10%;
+    top: -10%;
+  }
+}
+
+/* ===============================================
+# パカパカ
+=============================================== */
+.pakapka {
+  margin: 50px -2rem 0;
+  width: 100vw;
+  height: 20vmax;
+  -webkit-animation: pakapaka 0.6s steps(1) infinite;
+          animation: pakapaka 0.6s steps(1) infinite;
+}
+
+/* ===============================================
+# お問い合わせ
+=============================================== */
+.contact #top {
+  margin-top: 0;
+}
+.contact .form-wrapper {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 150px;
+}
+@media (max-width: 719px) {
+  .contact .form-wrapper {
+    margin-top: 200px;
+  }
+}
+.contact .form-wrapper .form {
+  margin: 0 auto;
+  text-align: center;
+}
+.contact .form-wrapper .form .form-iframe {
+  width: 100vw;
+  height: 1700px;
+}
+@media (max-width: 719px) {
+  .contact .form-wrapper .form .form-iframe {
+    height: 2000px;
+  }
+}
+
+/* ===============================================
+# アニメまとめ
+=============================================== */
+@-webkit-keyframes katakata {
+  0% {
+    -webkit-transform: translateX(0px) translateY(0px) rotate(1deg);
+            transform: translateX(0px) translateY(0px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translateX(3px) translateY(1px) rotate(0deg);
+            transform: translateX(3px) translateY(1px) rotate(0deg);
+  }
+}
+@keyframes katakata {
+  0% {
+    -webkit-transform: translateX(0px) translateY(0px) rotate(1deg);
+            transform: translateX(0px) translateY(0px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translateX(3px) translateY(1px) rotate(0deg);
+            transform: translateX(3px) translateY(1px) rotate(0deg);
+  }
+}
+@-webkit-keyframes tekuteku {
+  0% {
+    background: url(../icon/tekuteku1.webp) repeat center center/contain;
+  }
+  50% {
+    background: url(../icon/tekuteku3.webp) repeat center center/contain;
+  }
+}
+@keyframes tekuteku {
+  0% {
+    background: url(../icon/tekuteku1.webp) repeat center center/contain;
+  }
+  50% {
+    background: url(../icon/tekuteku3.webp) repeat center center/contain;
+  }
+}
+@-webkit-keyframes hituji {
+  0% {
+    background: url(../icon/hituji.png) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../icon/hituji2.png) no-repeat center center/contain;
+  }
+}
+@keyframes hituji {
+  0% {
+    background: url(../icon/hituji.png) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../icon/hituji2.png) no-repeat center center/contain;
+  }
+}
+@-webkit-keyframes guruguru {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes guruguru {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes pakapaka {
+  0% {
+    background: url(../icon/hanayagi4.png) repeat-x center center/contain;
+  }
+  30% {
+    background: url(../icon/hanayagi3.png) repeat-x center center/contain;
+  }
+  50% {
+    background: url(../icon/hanayagi1.png) repeat-x center center/contain;
+  }
+  70% {
+    background: url(../icon/hanayagi2.png) repeat-x center center/contain;
+  }
+}
+@keyframes pakapaka {
+  0% {
+    background: url(../icon/hanayagi4.png) repeat-x center center/contain;
+  }
+  30% {
+    background: url(../icon/hanayagi3.png) repeat-x center center/contain;
+  }
+  50% {
+    background: url(../icon/hanayagi1.png) repeat-x center center/contain;
+  }
+  70% {
+    background: url(../icon/hanayagi2.png) repeat-x center center/contain;
+  }
+}
+@-webkit-keyframes toubu {
+  0% {
+    background: url(../omen/toubu1.webp) no-repeat center center/contain;
+  }
+  25% {
+    background: url(../omen/toubu2.webp) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../omen/toubu3.webp) no-repeat center center/contain;
+  }
+  75% {
+    background: url(../omen/toubu4.webp) no-repeat center center/contain;
+  }
+}
+@keyframes toubu {
+  0% {
+    background: url(../omen/toubu1.webp) no-repeat center center/contain;
+  }
+  25% {
+    background: url(../omen/toubu2.webp) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../omen/toubu3.webp) no-repeat center center/contain;
+  }
+  75% {
+    background: url(../omen/toubu4.webp) no-repeat center center/contain;
+  }
+}
+@-webkit-keyframes yellow {
+  0% {
+    background: url(../omen/yellowheadgear01.webp) no-repeat center center/contain;
+  }
+  25% {
+    background: url(../omen/yellowheadgear03.webp) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../omen/yellowheadgear02.webp) no-repeat center center/contain;
+  }
+  75% {
+    background: url(../omen/yellowheadgear04.webp) no-repeat center center/contain;
+  }
+}
+@keyframes yellow {
+  0% {
+    background: url(../omen/yellowheadgear01.webp) no-repeat center center/contain;
+  }
+  25% {
+    background: url(../omen/yellowheadgear03.webp) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../omen/yellowheadgear02.webp) no-repeat center center/contain;
+  }
+  75% {
+    background: url(../omen/yellowheadgear04.webp) no-repeat center center/contain;
+  }
+}
+@-webkit-keyframes tengu {
+  0% {
+    background: url(../omen/tengumen01.webp) no-repeat center center/contain;
+  }
+  25% {
+    background: url(../omen/tengumen03.webp) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../omen/tengumen02.webp) no-repeat center center/contain;
+  }
+  75% {
+    background: url(../omen/tengumen04.webp) no-repeat center center/contain;
+  }
+}
+@keyframes tengu {
+  0% {
+    background: url(../omen/tengumen01.webp) no-repeat center center/contain;
+  }
+  25% {
+    background: url(../omen/tengumen03.webp) no-repeat center center/contain;
+  }
+  50% {
+    background: url(../omen/tengumen02.webp) no-repeat center center/contain;
+  }
+  75% {
+    background: url(../omen/tengumen04.webp) no-repeat center center/contain;
+  }
+}/*# sourceMappingURL=style.css.map */
