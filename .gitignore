@@ -1,0 +1,13 @@
+# macOS関連
+.DS_Store
+
+# Node.js関連
+node_modules/
+setting.json
+
+# VS Codeの設定
+.vscode/
+
+# 一時ファイル・キャッシュ
+*.log
+*.tmp

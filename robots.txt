@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://annfalo.github.io/anfalopophagi/sitemap.xml
