@@ -93,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ///ミミズ
     const images = [
-        "../icon/mimizu1.png",
-        "../icon/mimizu2.png",
-        "../icon/mimizu3.png"
+        "../icon/mimizu1.webp",
+        "../icon/mimizu2.webp",
+        "../icon/mimizu3.webp"
     ];
 
     gsap.set(".mimizu", { backgroundImage: `url(${images[0]})` });
