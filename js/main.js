@@ -93,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ///ミミズ
     const images = [
-        "anfalopophagi/icon/mimizu1.webp",
-        "anfalopophagi/icon/mimizu2.webp",
-        "anfalopophagi/icon/mimizu3.webp"
+        "https://annfalo.github.io/anfalopophagi/icon/mimizu1.webp",
+        "https://annfalo.github.io/anfalopophagi/icon/mimizu2.webp",
+        "https://annfalo.github.io/anfalopophagi/icon/mimizu3.webp"
     ];
 
     gsap.set(".mimizu", { backgroundImage: `url(${images[0]})` });
