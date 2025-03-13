@@ -385,6 +385,8 @@ header {
     background: url(../icon/kami.png) no-repeat center center/contain;
     background-position: 65% center;
     padding: 120px;
+    margin: 50px auto 300px;
+    @include hover-scale(1.1, .1s);
 
     @media screen and (min-width: 1200px) {
         padding: 150px;
@@ -394,6 +396,7 @@ header {
     img {
         width: 20vw;
         max-width: 200px;
+        @include hover-scale(1.1, .1s);
 
         @media screen and (max-width: 768px) {
             width: 90%;
@@ -419,14 +422,6 @@ header {
 
         @media screen and (max-width: 768px) {
             font-size: 12px;
-        }
-    }
-
-    &:hover {
-        opacity: .6;
-
-        @media screen and (max-width: 768px) {
-            opacity: 1;
         }
     }
 
@@ -500,15 +495,29 @@ header {
 #omen,
 #external,
 #contact {
-    background: var(--gray);
     margin: 30vh 2rem 0;
     padding-bottom: 12vh;
     text-align: center;
-    border-radius: 18px;
+    background-color: var(--gray);
+    position: relative;
+
+    &:after {
+        content: '';
+        width: 100%;
+        height: 8%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: url(../icon/kusamura.png) repeat-x bottom center/contain;
+    }
 
     @include mobile {
         margin: 30vh 0;
     }
+}
+
+.title-wrapper {
+    background-color: var(--yellow);
 }
 
 .title {
@@ -545,8 +554,11 @@ header {
     justify-content: center;
     align-items: center;
     gap: 3vw;
-    margin-bottom: 100px;
-    padding: 1rem;
+    padding: 5rem 1rem;
+    background: var(--gray);
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+
 
     @include mobile {
         padding: 0;
@@ -612,10 +624,15 @@ header {
 }
 
 .tekuteku {
-    margin: 50px -2rem 0;
+    margin: 50px 0 0;
     width: 100vw;
     height: 15vmax;
     animation: tekuteku 1s steps(1) infinite;
+    transform: translateY(-340px);
+
+    @include mobile {
+        margin: 50px 0 0;
+    }
 }
 
 /* ===============================================
@@ -651,6 +668,11 @@ header {
             .yellow {
                 animation: yellow .7s steps(1) infinite;
                 width: 35vw;
+
+                @include mobile {
+                    width: 80vw;
+                    margin-left: -10vw;
+                }
             }
 
             .tengu {
@@ -664,11 +686,12 @@ header {
 コンタクト
 =============================================== */
 #contact {
+
     dl {
-        border: 2px solid var(--dark-gray);
-        width: 80vw;
+        border-top: 2px solid var(--dark-gray);
+
+        width: 100%;
         padding: 1.8rem;
-        margin: 10vh auto;
         text-align: center;
 
         dt {
@@ -764,11 +787,21 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 80px;
+
+    h2 {
+        font-size: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
     #canvas {
         border: 1px solid var(--black);
-        background-color: rgba($color: #fff, $alpha: .35);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(4px);
     }
 
     .tools {
@@ -777,7 +810,7 @@ footer {
         justify-content: space-between;
         align-items: center;
         background-color: var(--blue);
-        padding: 10px 30px;
+        padding: 20px 30px;
 
         @media screen and (max-width: 800px) {
             width: 100vw;
@@ -792,30 +825,34 @@ footer {
             align-items: center;
 
             #rectangle {
+                background: url(../icon/rectangle.png) no-repeat center center/contain;
                 width: 65px;
                 height: 50px;
-                background-color: var(--yellow);
+                @include hover-scale(1.1, 0s);
             }
 
             #circle {
+                background: url(../icon/circle.png) no-repeat center center/contain;
                 width: 50px;
                 height: 50px;
-                border-radius: 50px;
-                background-color: var(--red);
+                @include hover-scale(1.1, 0s);
+
             }
 
             #triangle {
-                width: 0;
-                height: 0;
-                border-left: 30px solid transparent;
-                border-right: 30px solid transparent;
-                border-bottom: 50px solid var(--white);
+                background: url(../icon/triangle.png) no-repeat center center/contain;
+                width: 65px;
+                height: 60px;
+                @include hover-scale(1.1, 0s);
+
             }
 
             #pen {
                 width: 65px;
                 height: 60px;
                 background: url(../icon/pen.png) no-repeat center center/contain;
+                @include hover-scale(1.1, 0s);
+
             }
         }
 
@@ -840,9 +877,9 @@ footer {
                 -webkit-appearance: none;
                 appearance: none;
                 width: 50px;
-                height: 50px;
+                height: 60px;
                 cursor: pointer;
-                background: url(../icon/yagihead1.webp) no-repeat center center/contain;
+                background: url(../icon/tankobu.png) no-repeat center center/contain;
             }
 
             input[type="range"]::-moz-range-thumb {
@@ -863,16 +900,36 @@ footer {
 
 
     .btn-wrapper {
-        margin: 1rem;
+        width: 800px;
+        text-align: center;
+        padding: 1rem 0;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 0 0 50px 50px;
 
         #clear,
         #save {
-            background-color: var(--gray);
-            padding: .3rem .5rem;
-            border-radius: 5px;
-            border: 1px solid var(--black);
+            width: 200px;
+            height: 100px;
+
+            &:hover {
+                animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+            }
+
+            @media screen and (max-width: 800px) {
+                width: 150px;
+            }
         }
 
+        #clear {
+            background: url(../icon/clearbtn.png) no-repeat center center/contain;
+        }
+
+        #save {
+            background: url(../icon/savebtn.png) no-repeat center center/contain;
+
+        }
     }
 
 }
@@ -922,10 +979,15 @@ footer {
 # パカパカ
 =============================================== */
 .pakapka {
-    margin: 50px -2rem 0;
+    margin: 50px 0 0;
     width: 100vw;
     height: 20vmax;
     animation: pakapaka .6s steps(1) infinite;
+    transform: translateY(-400px);
+
+    @include mobile {
+        margin: 50px 0 0;
+    }
 }
 
 /* ===============================================
