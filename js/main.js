@@ -21,6 +21,20 @@ $(document).ready(function () {
     });
 });
 
+//fancybox
+$(document).ready(function () {
+    $('[data-fancybox="artwork"]').fancybox({
+        buttons: [
+            "close"
+        ],
+        thumbs: {
+            autoStart: false
+        },
+        zIndex: 10000,
+        loop: true,
+    });
+});
+
 //gsap
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -38,28 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         rotation: 1080,
         ease: "none",
     });
-
-    //fancybox
-    $(document).ready(function () {
-        $('[data-fancybox="artwork"]').fancybox({
-            buttons: [
-                "close"
-            ],
-            thumbs: {
-                autoStart: false
-            },
-            zIndex: 10000,
-            loop: true,
-            afterShow: function (instance, current) {
-                // 現在表示されている画像のURLを取得
-                var imageUrl = current.src;
-
-                // オーバーレイの背景画像として設定
-                $('.fancybox-overlay').css('background-image', 'url(' + imageUrl + ')');
-            },
-        });
-    });
-
 
     //コンタクトdlの色をかえる
     gsap.utils.toArray(".contact-wrapper dl").forEach((dl) => {
@@ -126,20 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    document.querySelectorAll('.underline').forEach((element) => {
-        gsap.to(element, {
-            scrollTrigger: {
-                trigger: element.closest('.btn'),
-                start: 'top bottom',
-                end: 'bottom center',
-                invalidateOnRefresh: true,
-                toggleActions: 'restart none none none'
-            },
-            width: '70%',
-            duration: .8,
-            ease: 'power3'
-        });
-    });
+
+    //アンダーライン
+    // document.querySelectorAll('.underline').forEach((element) => {
+    //     gsap.to(element, {
+    //         scrollTrigger: {
+    //             trigger: element.closest('.btn'),
+    //             start: 'top bottom',
+    //             end: 'bottom center',
+    //             invalidateOnRefresh: true,
+    //             toggleActions: 'restart none none none'
+    //         },
+    //         width: '70%',
+    //         duration: .8,
+    //         ease: 'power3'
+    //     });
+    // });
 });
 
 //手紙開く
@@ -215,6 +209,7 @@ window.onload = () => {
     });
 };
 
+
 //キャンバス
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -225,28 +220,33 @@ const rectangleButton = document.getElementById("rectangle");
 const circleButton = document.getElementById("circle");
 const penButton = document.getElementById("triangle");
 const saveButton = document.getElementById("save");
-const lineButton = document.getElementById("pen");
 
 let drawing = false;
 let currentShape = null;
 let startX, startY;
 let shapes = [];
 
-
 ctx.lineWidth = 3;
 ctx.lineCap = "round";
 
 lineWidthSlider.value = ctx.lineWidth;
 
+//getMousePos関数
 function getMousePos(event) {
     const rect = canvas.getBoundingClientRect();
+    const touch = event.touches ? event.touches[0] : event;
     return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top
     };
 }
 
-canvas.addEventListener("mousedown", (event) => {
+// mousedown / touchstart イベント
+canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("touchstart", startDrawing);
+
+function startDrawing(event) {
+    event.preventDefault(); // スクロールやズームを防ぐ
     drawing = true;
     const pos = getMousePos(event);
     startX = pos.x;
@@ -258,14 +258,17 @@ canvas.addEventListener("mousedown", (event) => {
 
     ctx.beginPath();
     ctx.moveTo(pos.x, pos.y);
-});
+}
 
-canvas.addEventListener("mousemove", (event) => {
+// mousemove / touchmove イベント
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("touchmove", draw);
+
+function draw(event) {
     if (!drawing) return;
     const pos = getMousePos(event);
 
     if (currentShape === 'rectangle') {
-
         ctx.beginPath();
         ctx.rect(startX, startY, pos.x - startX, pos.y - startY);
         ctx.stroke();
@@ -281,32 +284,35 @@ canvas.addEventListener("mousemove", (event) => {
         ctx.lineTo(startX * 2 - pos.x, pos.y);
         ctx.closePath();
         ctx.stroke();
-    }
-    else {
+    } else {
         ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
     }
-});
+}
 
-canvas.addEventListener("mouseup", () => {
+// mouseup / touchend イベント
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("touchend", stopDrawing);
+canvas.addEventListener("mouseleave", stopDrawing);
+
+function stopDrawing() {
     drawing = false;
     if (currentShape === 'rectangle' || currentShape === 'circle') {
         ctx.beginPath();
     }
-});
+}
 
-canvas.addEventListener("mouseleave", () => {
-    drawing = false;
-});
-
+// 色変更
 colorPicker.addEventListener("input", function () {
     ctx.strokeStyle = colorPicker.value;
 });
 
+// 線の太さ変更
 lineWidthSlider.addEventListener("input", function () {
     ctx.lineWidth = lineWidthSlider.value;
 });
 
+// シェイプ選択
 rectangleButton.addEventListener("click", () => {
     currentShape = 'rectangle';
 });
@@ -319,14 +325,11 @@ penButton.addEventListener("click", () => {
     currentShape = 'triangle';
 });
 
-lineButton.addEventListener("click", () => {
-    currentShape = null;
-});
-
 clearButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
+// 保存ボタン
 saveButton.addEventListener("click", function () {
     const dataURL = canvas.toDataURL();
     const link = document.createElement("a");

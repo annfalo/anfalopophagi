@@ -357,7 +357,7 @@ header .gnav-wrapper .gnav-list .preparing:before {
   z-index: 8;
 }
 header .gnav-wrapper .gnav-list .preparing:after {
-  content: "開発中";
+  content: "準備中";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -407,6 +407,7 @@ header .to-top:hover {
   position: fixed;
   bottom: 0;
   left: 20px;
+  z-index: 888888;
 }
 @media screen and (max-width: 768px) {
   .mimizu {
@@ -805,11 +806,17 @@ header .to-top:hover {
 /* ===============================================
 コンタクト
 =============================================== */
+#contact {
+  padding-bottom: 20vh;
+}
 #contact dl {
   border-top: 2px solid var(--dark-gray);
   width: 100%;
   padding: 1.8rem;
   text-align: center;
+}
+#contact dl:first-child {
+  margin-top: 50px;
 }
 #contact dl dt {
   font-size: 24px;
@@ -820,31 +827,20 @@ header .to-top:hover {
   display: inline-block;
   margin-top: 2rem;
   font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
-  padding: 3rem 5rem;
+  padding: 3rem 5rem 8rem 6rem;
   text-align: center;
   font-weight: 600;
   letter-spacing: 0.2rem;
-  background: url(../icon/tag5.png) no-repeat center center/cover;
-  -webkit-transform: rotate(-2deg);
-          transform: rotate(-2deg);
-  position: relative;
+  background: url(../icon/butter.png) no-repeat center center/contain;
+  color: var(--red);
+}
+#contact dl .btn:hover {
+  background-image: url(../icon/cake.png);
 }
 @media screen and (max-width: 768px) {
   #contact dl .btn {
-    padding: 3rem;
+    font-size: 18px;
   }
-}
-#contact dl .btn .underline {
-  position: absolute;
-  bottom: 28%;
-  left: 15%;
-  width: 8px;
-  height: 8px;
-  background-color: var(--red);
-}
-#contact dl .btn:hover {
-  -webkit-animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-          animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
 }
 
 /* ===============================================
@@ -903,6 +899,13 @@ header .to-top:hover {
 footer {
   text-align: center;
   padding: 1rem;
+  margin-top: 50px;
+}
+footer .logo img {
+  width: 30vw;
+}
+footer .footer-insta img {
+  width: 50px;
 }
 
 .hituji {
@@ -939,20 +942,54 @@ footer {
   margin-top: 80px;
 }
 .oekaki h2 {
-  font-size: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  font-size: 32px;
+  font-size: 2rem;
+  background-color: var(--yellow);
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border-radius: 50px;
+  border: 1px solid var(--black);
+  position: relative;
+}
+@media (max-width: 719px) {
+  .oekaki h2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0.5rem;
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+}
+.oekaki h2 img {
+  width: 50px;
+}
+@media (max-width: 719px) {
+  .oekaki h2 img {
+    width: 30px;
+  }
+}
+.oekaki h2 span {
+  font-size: 21px;
+  font-size: 1.3125rem;
+  color: var(--blue);
+  margin: 0 1rem;
+}
+@media (max-width: 719px) {
+  .oekaki h2 span {
+    font-size: 16px;
+    font-size: 1rem;
+    margin-top: -0.3rem;
+  }
 }
 .oekaki #canvas {
   border: 1px solid var(--black);
@@ -1066,6 +1103,11 @@ footer {
   background: var(--gray);
   border-radius: 5px;
 }
+@media (max-width: 719px) {
+  .oekaki .tools .input-wrapper input[type=range] {
+    width: 200px;
+  }
+}
 .oekaki .tools .input-wrapper input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -1110,6 +1152,11 @@ footer {
   .oekaki .btn-wrapper #save {
     width: 150px;
   }
+  .oekaki .btn-wrapper #clear:hover,
+  .oekaki .btn-wrapper #save:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
 }
 .oekaki .btn-wrapper #clear {
   background: url(../icon/clearbtn.png) no-repeat center center/contain;
@@ -1123,6 +1170,7 @@ footer {
 =============================================== */
 .painting #Artworks {
   margin-top: 75px;
+  padding-bottom: 100px;
 }
 .painting #Artworks .card-wrapper .card {
   border: none;

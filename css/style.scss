@@ -280,7 +280,7 @@ header {
                 }
 
                 &:after {
-                    content: '開発中';
+                    content: '準備中';
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -335,6 +335,7 @@ header {
     position: fixed;
     bottom: 0;
     left: 20px;
+    z-index: 888888;
 
     @media screen and (max-width: 768px) {
         height: 20vh;
@@ -686,13 +687,17 @@ header {
 コンタクト
 =============================================== */
 #contact {
+    padding-bottom: 20vh;
 
     dl {
         border-top: 2px solid var(--dark-gray);
-
         width: 100%;
         padding: 1.8rem;
         text-align: center;
+
+        &:first-child {
+            margin-top: 50px;
+        }
 
         dt {
             font-size: 24px;
@@ -702,20 +707,7 @@ header {
 
         .btn {
             @include btn;
-            position: relative;
-
-            .underline {
-                position: absolute;
-                bottom: 28%;
-                left: 15%;
-                width: 8px;
-                height: 8px;
-                background-color: var(--red);
-            }
-
-            &:hover {
-                animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-            }
+            color: var(--red);
         }
     }
 }
@@ -765,6 +757,19 @@ header {
 footer {
     text-align: center;
     padding: 1rem;
+    margin-top: 50px;
+
+    .logo {
+        img {
+            width: 30vw;
+        }
+    }
+
+    .footer-insta {
+        img {
+            width: 50px;
+        }
+    }
 }
 
 .hituji {
@@ -790,11 +795,41 @@ footer {
     margin-top: 80px;
 
     h2 {
-        font-size: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        @include fz(32);
+        background-color: var(--yellow);
+        padding: 0.5rem .5rem .5rem 2rem;
+        border-radius: 50px;
+        border: 1px solid var(--black);
+        position: relative;
+
+        @include mobile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 0.5rem;
+            @include fz(24);
+
+        }
+
+        img {
+            width: 50px;
+
+            @include mobile {
+                width: 30px;
+            }
+        }
+
+        span {
+            @include fz(21);
+            color: var(--blue);
+            margin: 0 1rem;
+
+            @include mobile {
+                @include fz(16);
+                margin-top: -0.3rem;
+            }
+        }
     }
 
     #canvas {
@@ -871,6 +906,10 @@ footer {
                 height: 8px;
                 background: var(--gray);
                 border-radius: 5px;
+
+                @include mobile {
+                    width: 200px;
+                }
             }
 
             input[type="range"]::-webkit-slider-thumb {
@@ -919,6 +958,10 @@ footer {
 
             @media screen and (max-width: 800px) {
                 width: 150px;
+
+                &:hover {
+                    animation: none;
+                }
             }
         }
 
@@ -940,6 +983,7 @@ footer {
 .painting {
     #Artworks {
         margin-top: 75px;
+        padding-bottom: 100px;
 
         .card-wrapper {
 
