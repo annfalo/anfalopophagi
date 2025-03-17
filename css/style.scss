@@ -88,6 +88,7 @@ header {
             span {
                 position: absolute;
                 font-size: 8px;
+                color: var(--red);
 
                 @media screen and (max-width: 768px) {
                     font-size: 5px;
@@ -97,13 +98,12 @@ header {
 
         .gnav-icon {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             align-items: center;
-            gap: 3rem;
 
             @media screen and (max-width: 768px) {
-                gap: 1.5rem;
-                height: 70px;
+                height: 75px;
+                width: 100vw;
             }
         }
 
@@ -113,14 +113,17 @@ header {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-top: 5px;
+            color: var(--red);
 
             img {
-                width: 7vmin;
+                width: 100px;
+                height: 75px;
+                padding: .5rem;
+                border-radius: 0 0 10px 10px;
+                border: 1px solid var(--black);
+                background-color: var(--gray);
 
-                @media screen and (max-width: 768px) {
-                    width: 10vmin;
-                }
+                @media screen and (max-width: 768px) {}
             }
 
             p {
@@ -148,12 +151,13 @@ header {
                 width: 40px;
                 height: 4px;
                 background-color: var(--black);
-                transition: .3s;
+                transition: .3s ease-in-out;
+                border-radius: 50px;
             }
 
             &.open {
                 span:nth-child(1) {
-                    transform: translateY(9px) rotate(135deg);
+                    transform: translateY(9px) rotate(315deg);
                 }
 
                 span:nth-child(2) {
@@ -161,7 +165,7 @@ header {
                 }
 
                 span:nth-child(3) {
-                    transform: translateY(-9px) rotate(-135deg);
+                    transform: translateY(-9px) rotate(-315deg);
                 }
             }
 
@@ -193,16 +197,16 @@ header {
             justify-content: center;
             align-items: center;
             word-break: keep-all;
+            border-radius: 20px;
 
             @media screen and (max-width: 768px) {
                 display: none;
-                gap: 8vh;
-                margin-bottom: 5vh;
 
                 &.open {
                     display: flex;
                     flex-direction: column;
-                    transition: .3s;
+                    margin: auto;
+                    transition: .3s ease-in-out;
                 }
             }
 
@@ -216,41 +220,23 @@ header {
                 flex-direction: column;
                 font-weight: 600;
                 font-size: clamp(0.875rem, 0.431rem + 0.93vw, 1.125rem);
+                border: 1px solid var(--black);
+                border-radius: 50px;
                 letter-spacing: .15rem;
                 font-family: var(--font-en);
                 padding: 1rem;
-                border-left: 1px solid var(--black);
+                background-color: var(--yellow);
 
-                @media screen and (max-width: 768px) {
-                    border: none;
+                &:hover {
+                    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+                    color: #fff;
+                }
+
+                @include mobile {
                     font-size: 40px;
-                    width: 60vw;
-                    margin: 0 auto;
-                }
-
-                &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 0;
-                    height: 2px;
-                    background-color: currentColor;
-                    transition: width .3s ease-in-out;
-
-                    @media screen and (max-width: 768px) {
-                        width: 200vw;
-                        margin-left: -50vw;
-                        transform-origin: center;
-                    }
-                }
-
-                &:hover::before {
-                    width: 100%;
-
-                    @media screen and (max-width: 768px) {
-                        width: 200vw;
-                    }
+                    margin: 1rem auto;
+                    padding: 4rem 0;
+                    width: 100vw;
                 }
 
                 span {
@@ -277,6 +263,7 @@ header {
                     width: 100%;
                     height: 100%;
                     z-index: 8;
+                    border-radius: 50px;
                 }
 
                 &:after {
@@ -350,7 +337,6 @@ header {
     position: fixed;
     left: 0;
     z-index: -1;
-    margin-top: 75px;
     background: url(../icon/sky.jpg) no-repeat center center/cover;
 
     .kv-wrapper {
@@ -392,6 +378,11 @@ header {
     @media screen and (min-width: 1200px) {
         padding: 150px;
         background-position: 55% center;
+    }
+
+    @include mobile {
+        transform: initial;
+        margin-bottom: 180px;
     }
 
     img {
@@ -437,9 +428,8 @@ header {
         transform: rotate(-45deg);
         transition: transform 0.5s ease, right 0.5s ease;
 
-        @media screen and (max-width: 768px) {
-            top: calc(120% - 3.5px);
-            right: -20%;
+        @include mobile {
+            display: none;
         }
     }
 
@@ -510,6 +500,11 @@ header {
         bottom: 0;
         left: 0;
         background: url(../icon/kusamura.png) repeat-x bottom center/contain;
+
+        @include mobile {
+            background-size: cover;
+            height: 120px;
+        }
     }
 
     @include mobile {
@@ -633,6 +628,7 @@ header {
 
     @include mobile {
         margin: 50px 0 0;
+        transform: translateY(-550px);
     }
 }
 

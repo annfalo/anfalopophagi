@@ -1,16 +1,3 @@
-//#topのmargin--top:0;
-window.addEventListener('scroll', () => {
-    const body = document.body;
-    const topSection = document.querySelector('#top');
-    if (body.classList.contains('main')) {
-        if (window.scrollY >= 1000) {
-            topSection.style.marginTop = '0';
-        } else {
-            topSection.style.marginTop = '75px';
-        }
-    }
-});
-
 //ハンバーガーメニュー
 $(document).ready(function () {
     $(".hamburger").click(function () {
@@ -70,18 +57,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
     //全てを見るボタンのスライド
-    gsap.utils.toArray(".all-view").forEach((btn) => {
-        gsap.to(btn, {
-            scrollTrigger: {
-                trigger: btn,
-                start: "top bottom",
-                end: "top center",
-                scrub: .1,
-                invalidateOnRefresh: true
-            },
-            x: 0,
+    const isMobile = window.innerWidth < 720;
+
+    if (!isMobile) {
+        gsap.utils.toArray(".all-view").forEach((btn) => {
+            gsap.to(btn, {
+                scrollTrigger: {
+                    trigger: btn,
+                    start: "top bottom",
+                    end: "top center",
+                    scrub: .1,
+                    invalidateOnRefresh: true
+                },
+                x: 0,
+            });
         });
-    });
+    } else {
+        gsap.utils.toArray(".all-view").forEach((btn) => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        });
+    }
 
     ///ミミズ
     const images = [
@@ -246,7 +241,7 @@ canvas.addEventListener("mousedown", startDrawing);
 canvas.addEventListener("touchstart", startDrawing);
 
 function startDrawing(event) {
-    event.preventDefault(); // スクロールやズームを防ぐ
+    event.preventDefault();
     drawing = true;
     const pos = getMousePos(event);
     startX = pos.x;
