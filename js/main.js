@@ -22,6 +22,18 @@ $(document).ready(function () {
     });
 });
 
+window.onload = function () {
+    $('[data-fancybox="painting"]').fancybox({
+        buttons: [
+            "close"
+        ],
+        thumbs: {
+            autoStart: false
+        },
+        zIndex: 10000,
+        loop: true,
+    });
+};
 //gsap
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);

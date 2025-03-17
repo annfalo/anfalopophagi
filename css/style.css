@@ -112,36 +112,34 @@ header .gnav-wrapper.open {
   background: url(../icon/sky.jpg) no-repeat center center/cover;
 }
 header .gnav-wrapper h1 {
-  width: 22vw;
   position: relative;
-  max-width: 250px;
-  padding-left: 1rem;
+  -webkit-transform: translateX(20vw);
+          transform: translateX(20vw);
+  height: 73px;
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 719px) {
   header .gnav-wrapper h1 {
-    width: 120px;
+    -webkit-transform: translateX(8vw);
+            transform: translateX(8vw);
   }
 }
 header .gnav-wrapper h1 span {
   position: absolute;
   font-size: 8px;
-  color: var(--red);
-}
-@media screen and (max-width: 768px) {
-  header .gnav-wrapper h1 span {
-    font-size: 5px;
-  }
+  top: 8px;
+  left: 45px;
 }
 header .gnav-wrapper .gnav-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-right: 2rem;
 }
 @media screen and (max-width: 768px) {
   header .gnav-wrapper .gnav-icon {
@@ -149,8 +147,15 @@ header .gnav-wrapper .gnav-icon {
     width: 100vw;
   }
 }
-header .gnav-wrapper .instagram,
-header .gnav-wrapper .contact {
+header .gnav-wrapper .icon-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+header .gnav-wrapper .icon-wrapper .instagram,
+header .gnav-wrapper .icon-wrapper .contact {
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -161,25 +166,61 @@ header .gnav-wrapper .contact {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   color: var(--red);
 }
-header .gnav-wrapper .instagram img,
-header .gnav-wrapper .contact img {
-  width: 100px;
-  height: 75px;
-  padding: 0.5rem;
-  border-radius: 0 0 10px 10px;
-  border: 1px solid var(--black);
-  background-color: var(--gray);
-}
-header .gnav-wrapper .instagram p,
-header .gnav-wrapper .contact p {
+header .gnav-wrapper .icon-wrapper .instagram p,
+header .gnav-wrapper .icon-wrapper .contact p {
   font-size: 11px;
   font-weight: bold;
-  margin-top: -0.2rem;
+  margin-top: -1.2rem;
+  text-align: center;
+}
+header .gnav-wrapper .icon-wrapper .instagram {
+  top: -180px;
+  left: -80px;
+  -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg);
+}
+@media (max-width: 719px) {
+  header .gnav-wrapper .icon-wrapper .instagram {
+    top: -70px;
+    left: -30px;
+  }
+}
+header .gnav-wrapper .icon-wrapper .instagram img {
+  width: 40vw;
+  max-width: 400px;
+}
+@media (max-width: 719px) {
+  header .gnav-wrapper .icon-wrapper .instagram img {
+    width: 30vw;
+    min-width: 130px;
+  }
+}
+header .gnav-wrapper .icon-wrapper .contact {
+  left: -20px;
+  top: 100px;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+@media (max-width: 719px) {
+  header .gnav-wrapper .icon-wrapper .contact {
+    top: 60px;
+    left: 0;
+  }
+}
+header .gnav-wrapper .icon-wrapper .contact p {
+  margin-top: 0.3rem;
+  margin-left: -1.5rem;
+}
+@media (max-width: 719px) {
+  header .gnav-wrapper .icon-wrapper .contact p {
+    margin-left: 0.5rem;
+  }
+}
+header .gnav-wrapper .icon-wrapper .contact img {
+  width: 15vw;
+  max-width: 200px;
 }
 header .gnav-wrapper .hamburger {
   display: none;
@@ -259,6 +300,7 @@ header .gnav-wrapper .gnav-list {
           align-items: center;
   word-break: keep-all;
   border-radius: 20px;
+  padding-right: 1rem;
 }
 @media screen and (max-width: 768px) {
   header .gnav-wrapper .gnav-list {
@@ -820,22 +862,32 @@ header .to-top:hover {
   font-weight: 600;
   margin-bottom: 2rem;
 }
-#contact dl .btn {
+#contact dl .btn a {
+  position: relative;
   display: inline-block;
   margin-top: 2rem;
   font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
-  padding: 3rem 5rem 8rem 6rem;
+  padding: 2rem 5rem;
   text-align: center;
-  font-weight: 600;
-  letter-spacing: 0.2rem;
-  background: url(../icon/butter.png) no-repeat center center/contain;
-  color: var(--red);
+  letter-spacing: 0.3rem;
+  background-color: #e94f17;
+  border-radius: 15px;
+  border: 2px solid #512616;
+  border-top: 3px solid #f7a98c;
+  -webkit-box-shadow: 0px 8px 0px #365760;
+          box-shadow: 0px 8px 0px #365760;
+  color: #fff;
+  -webkit-transition: all 0.05s ease-in-out;
+  transition: all 0.05s ease-in-out;
 }
-#contact dl .btn:hover {
-  background-image: url(../icon/cake.png);
+#contact dl .btn a:hover {
+  -webkit-box-shadow: 0px 0px 0px #634237;
+          box-shadow: 0px 0px 0px #634237;
+  -webkit-transform: translateY(8px);
+          transform: translateY(8px);
 }
 @media screen and (max-width: 768px) {
-  #contact dl .btn {
+  #contact dl .btn a {
     font-size: 18px;
   }
 }
@@ -856,7 +908,7 @@ header .to-top:hover {
   gap: 5vw;
 }
 .external-wrapper .external-site {
-  width: 80vw;
+  width: 60vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -870,6 +922,11 @@ header .to-top:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+@media (max-width: 719px) {
+  .external-wrapper .external-site {
+    width: 80vw;
+  }
 }
 .external-wrapper .external-site img {
   margin: 10vh 0 1rem;
@@ -903,6 +960,12 @@ footer .logo img {
 }
 footer .footer-insta img {
   width: 50px;
+}
+@media (max-width: 719px) {
+  footer small {
+    font-size: 8px;
+    font-size: 0.5rem;
+  }
 }
 
 .hituji {
@@ -1169,6 +1232,11 @@ footer .footer-insta img {
   margin-top: 75px;
   padding-bottom: 100px;
 }
+@media (max-width: 719px) {
+  .painting #Artworks .card-wrapper {
+    padding: 80px;
+  }
+}
 .painting #Artworks .card-wrapper .card {
   border: none;
   gap: 2vw;
@@ -1185,11 +1253,91 @@ footer .footer-insta img {
   font-size: 12px;
   margin-left: initial;
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 719px) {
   .painting #Artworks .card-wrapper .card .new-tag {
     left: -10%;
     top: -10%;
   }
+}
+@media (max-width: 719px) {
+  .painting .tekuteku {
+    -webkit-transform: translateY(-400px);
+            transform: translateY(-400px);
+  }
+}
+.painting .followUs {
+  border: 1px solid var(--black);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 30px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  width: 300px;
+  margin: 0 auto;
+}
+.painting .followUs .followUs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid var(--black);
+  height: 105px;
+}
+.painting .followUs .followUs-container p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  height: 100%;
+  height: 105px;
+  background: rgb(255, 254, 52);
+  background: radial-gradient(circle, rgb(255, 254, 52) 23%, rgb(53, 242, 247) 54%, rgb(240, 73, 5) 99%);
+  -webkit-filter: hue-rotate(180deg);
+          filter: hue-rotate(180deg);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.painting .followUs .followUs-container p:hover {
+  -webkit-filter: hue-rotate(0deg);
+          filter: hue-rotate(0deg);
+}
+.painting .followUs .followUs-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 150px;
+  height: 105px;
+  -webkit-filter: saturate(120%);
+          filter: saturate(120%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.painting .followUs .followUs-container img:hover {
+  -webkit-filter: saturate(300%);
+          filter: saturate(300%);
+}
+.painting .followUs .footer-insta {
+  padding: 10px;
 }
 
 /* ===============================================

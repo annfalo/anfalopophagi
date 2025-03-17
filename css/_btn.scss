@@ -1,15 +1,22 @@
     @mixin btn {
+        position: relative;
         display: inline-block;
         margin-top: 2rem;
         font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
-        padding: 3rem 5rem 8rem 6rem;
+        padding: 2rem 5rem;
         text-align: center;
-        font-weight: 600;
-        letter-spacing: .2rem;
-        background: url(../icon/butter.png) no-repeat center center/contain;
+        letter-spacing: .3rem;
+        background-color: #e94f17;
+        border-radius: 15px;
+        border: 2px solid #512616;
+        border-top: 3px solid #f7a98c;
+        box-shadow: 0px 8px 0px #365760;
+        color: #fff;
+        transition: all .05s ease-in-out;
 
         &:hover {
-            background-image: url(../icon/cake.png);
+            box-shadow: 0px 0px 0px #634237;
+            transform: translateY(8px);
         }
 
         @media screen and (max-width: 768px) {

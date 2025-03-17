@@ -36,7 +36,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <!-- パンくず -->
     <script type="application/ld+json">
@@ -65,15 +65,17 @@
     <header>
         <div class="gnav-wrapper">
             <div class="gnav-icon">
+                <div class="icon-wrapper">
+                    <div class="instagram"><a href="https://www.instagram.com/anfalopopjagui/" target="_blank"><img
+                                src="biology/tehutehu.webp" alt="インスタグラムへのリンク画像" id="instagram"></a>
+                        <p>instagram</p>
+                    </div>
+                    <div class="contact"><a href="./contact.html" target="_blank"><img src="icon/mail.png" alt="メールの絵"
+                                id="mail"></a>
+                        <p>contact</p>
+                    </div>
+                </div>
                 <h1><a href="./"><span>ANFALOPOPHAGI</span><img src="icon/title.png" alt=""></a></h1>
-                <div class="instagram"><a href="https://www.instagram.com/anfalopopjagui/" target="_blank"><img
-                            src="biology/tehutehu.webp" alt="インスタグラムへのリンク画像" id="instagram"></a>
-                    <p>instagram</p>
-                </div>
-                <div class="contact"><a href="./contact.html" target="_blank"><img src="icon/mail.png" alt="メールの絵"
-                            id="mail"></a>
-                    <p>contact</p>
-                </div>
                 <div class="hamburger">
                     <span></span><span></span><span></span>
                     <p class="menu-text">メニュー</p>
@@ -81,7 +83,9 @@
             </div>
 
             <ul class="gnav-list">
-                <li><a href="drawings.html"><span>ドローイング</span>Drawings</a>
+                <li><a href="./"><span>絵</span>Artworks</a>
+                </li>
+                <li class="preparing"><a href="./drawings.html"><span>ドローイング</span>Drawings</a>
                 </li>
                 <li class="preparing"><a href="#"><span>お面</span>Masks</a></li>
                 <!-- <li><span>小さいもの</span>Miniatures</li> -->
@@ -104,12 +108,14 @@
                 <div class="new-tag">
                     <p>NEW!</p>
                 </div>
-                <img src="painting/shell.webp" alt="">
+                <a href="painting/shell.webp" data-fancybox="painting" data-type="image" data-caption="貝、もしくは内臓"><img
+                        src="painting/shell.webp" alt="貝、もしくは内臓" /></a>
                 <h3 class="card-title">『貝、もしくは内臓』</h3>
                 <p class="year">2024</p>
             </div>
             <div class="card">
-                <img src="painting/karamari.webp" alt="">
+                <a href="painting/karamari.webp" data-fancybox="painting" data-type="image" data-caption="庭のからまり"><img
+                        src="painting/karamari.webp" alt="庭のからまり"></a>
                 <h3 class="card-title">『庭のからまり』</h3>
                 <p class="year">2020</p>
             </div>
@@ -251,7 +257,7 @@
                 <p class="year">2018</p>
             </div>
         </div>
-        <div class="all-view"><a href="./" class="see-all "><span>ホームへもどる</span><img src="icon/allview.png" alt=""></a>
+        <div class="all-view"><a href="./" class="see-all ">ホームへもどる</a>
         </div>
     </section>
     <div class="tekuteku"></div>
@@ -263,8 +269,17 @@
         <div class="sitemap">
             <a href="./" class="logo"><img src="icon/title.png" alt="アンファロポプハギのポートフォリオサイト"></a>
         </div>
-        <a href="https://www.instagram.com/anfalopopjagui/" target="_blank" class="footer-insta"><img
-                src="icon/instagram.png" alt="インスタグラムロゴ"></a>
+        <div class="followUs">
+            <div class="followUs-container">
+                <a href="https://www.instagram.com/anfalopopjagui/" target="_blank">
+                    <p>フォローする</p>
+                </a>
+                <a href="https://www.instagram.com/anfalopopjagui/" target="_blank"><img src="drawing/乳飲み首たち.webp"
+                        alt="乳飲み首たち"></a>
+            </div>
+            <a href="https://www.instagram.com/anfalopopjagui/" target="_blank" class="footer-insta"><img
+                    src="icon/instagram.png" alt="インスタグラムロゴ"></a>
+        </div>
         <p><small>このサイトのすべての画像は著作権者により所有されており、無断で使用することはできません。</small></p>
         <p><small>&copy; ANFALOPOPHAGI Limited 2025
                 All rights reserved</small></p>
