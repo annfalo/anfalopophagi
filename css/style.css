@@ -609,9 +609,38 @@ header .to-top:hover {
 /* ===============================================
 # ファンシー
 =============================================== */
-/* すべてのファンシーボックスのボタンを大きくする */
+.fancybox-button {
+  width: 60px;
+  height: 60px;
+  color: transparent;
+  margin-top: 5px;
+}
 .fancybox-button:hover {
-  color: var(--red);
+  color: transparent;
+}
+.fancybox-button--zoom {
+  background: url(../icon/cake.png) no-repeat center center/contain;
+}
+.fancybox-button--play {
+  background: url(../icon/sankaku.png) no-repeat center center/contain;
+}
+.fancybox-button--thumbs {
+  background: url(../icon/happabito.webp) no-repeat center center/contain;
+}
+.fancybox-button--close {
+  background: url(../icon/organ.webp) no-repeat center center/contain;
+}
+.fancybox-button--arrow_right {
+  width: 80px !important;
+  padding: 0 !important;
+  background: url(../icon/clearbtn.png) no-repeat center center/contain;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+.fancybox-button--arrow_left {
+  width: 80px !important;
+  padding: 0 !important;
+  background: url(../icon/clearbtn.png) no-repeat center center/contain;
 }
 
 /* ===============================================
@@ -1199,8 +1228,8 @@ footer .footer-insta img {
 }
 .oekaki .btn-wrapper #clear,
 .oekaki .btn-wrapper #save {
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 80px;
 }
 .oekaki .btn-wrapper #clear:hover,
 .oekaki .btn-wrapper #save:hover {

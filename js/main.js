@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 
 //fancybox
-$(document).ready(function () {
+window.onload = function () {
     $('[data-fancybox="artwork"]').fancybox({
         buttons: [
             "close"
@@ -20,7 +20,7 @@ $(document).ready(function () {
         zIndex: 10000,
         loop: true,
     });
-});
+};
 
 window.onload = function () {
     $('[data-fancybox="painting"]').fancybox({
@@ -225,7 +225,8 @@ const colorPicker = document.getElementById("colorPicker");
 const lineWidthSlider = document.getElementById("hutosa");
 const rectangleButton = document.getElementById("rectangle");
 const circleButton = document.getElementById("circle");
-const penButton = document.getElementById("triangle");
+const triangleButton = document.getElementById("triangle");
+const penButton = document.getElementById('pen');
 const saveButton = document.getElementById("save");
 
 let drawing = false;
@@ -309,17 +310,14 @@ function stopDrawing() {
     }
 }
 
-// 色変更
 colorPicker.addEventListener("input", function () {
     ctx.strokeStyle = colorPicker.value;
 });
 
-// 線の太さ変更
 lineWidthSlider.addEventListener("input", function () {
     ctx.lineWidth = lineWidthSlider.value;
 });
 
-// シェイプ選択
 rectangleButton.addEventListener("click", () => {
     currentShape = 'rectangle';
 });
@@ -328,15 +326,17 @@ circleButton.addEventListener("click", () => {
     currentShape = 'circle';
 });
 
-penButton.addEventListener("click", () => {
+triangleButton.addEventListener("click", () => {
     currentShape = 'triangle';
 });
 
 clearButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
+penButton.addEventListener("click", () => {
+    currentShape = null;
+});
 
-// 保存ボタン
 saveButton.addEventListener("click", function () {
     const dataURL = canvas.toDataURL();
     const link = document.createElement("a");

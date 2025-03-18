@@ -509,11 +509,44 @@ header {
 /* ===============================================
 # ファンシー
 =============================================== */
-/* すべてのファンシーボックスのボタンを大きくする */
 .fancybox-button {
+    width: 60px;
+    height: 60px;
+    color: transparent;
+    margin-top: 5px;
 
     &:hover {
-        color: var(--red);
+        color: transparent;
+    }
+
+    &--zoom {
+        background: url(../icon/cake.png) no-repeat center center/contain;
+    }
+
+    &--play {
+        background: url(../icon/sankaku.png) no-repeat center center/contain;
+    }
+
+    &--thumbs {
+        background: url(../icon/happabito.webp) no-repeat center center/contain;
+
+    }
+
+    &--close {
+        background: url(../icon/organ.webp) no-repeat center center/contain;
+    }
+
+    &--arrow_right {
+        width: 80px !important;
+        padding: 0 !important;
+        background: url(../icon/clearbtn.png) no-repeat center center/contain;
+        transform: scaleX(-1);
+    }
+
+    &--arrow_left {
+        width: 80px !important;
+        padding: 0 !important;
+        background: url(../icon/clearbtn.png) no-repeat center center/contain;
     }
 }
 
@@ -995,8 +1028,8 @@ footer {
 
         #clear,
         #save {
-            width: 200px;
-            height: 100px;
+            width: 150px;
+            height: 80px;
 
             &:hover {
                 animation: katakata 0.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
