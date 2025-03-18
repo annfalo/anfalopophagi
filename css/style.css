@@ -775,12 +775,8 @@ header .to-top:hover {
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
 }
-.card-wrapper .card h3 {
-  margin-left: -1.8rem;
-}
 .card-wrapper .card .year {
   font-size: 14px;
-  margin-left: -2rem;
 }
 @media screen and (max-width: 768px) {
   .card-wrapper .card .year {
@@ -806,6 +802,12 @@ header .to-top:hover {
 =============================================== */
 .main #Artworks {
   margin-top: 100vh;
+}
+.main #Artworks h3 {
+  margin-left: -1.8rem;
+}
+.main #Artworks .year {
+  margin-left: -2rem;
 }
 @media screen and (max-width: 768px) {
   .main #Artworks {
@@ -989,6 +991,80 @@ footer .logo img {
 }
 footer .footer-insta img {
   width: 50px;
+}
+footer .followUs {
+  border: 1px solid var(--black);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 30px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  width: 300px;
+  margin: 0 auto;
+}
+footer .followUs .followUs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid var(--black);
+  height: 105px;
+}
+footer .followUs .followUs-container p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  height: 100%;
+  height: 105px;
+  background: rgb(255, 254, 52);
+  background: radial-gradient(circle, rgb(255, 254, 52) 23%, rgb(53, 242, 247) 54%, rgb(240, 73, 5) 99%);
+  -webkit-filter: hue-rotate(180deg);
+          filter: hue-rotate(180deg);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+footer .followUs .followUs-container p:hover {
+  -webkit-filter: hue-rotate(0deg);
+          filter: hue-rotate(0deg);
+}
+footer .followUs .followUs-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 150px;
+  height: 105px;
+  -webkit-filter: saturate(120%);
+          filter: saturate(120%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+footer .followUs .followUs-container img:hover {
+  -webkit-filter: saturate(300%);
+          filter: saturate(300%);
+}
+footer .followUs .footer-insta {
+  padding: 10px;
 }
 @media (max-width: 719px) {
   footer small {
@@ -1274,8 +1350,6 @@ footer .footer-insta img {
   max-height: 300px;
 }
 .painting #Artworks .card-wrapper .card h3 {
-  font-size: 14px;
-  margin-left: initial;
   margin-top: 1rem;
 }
 .painting #Artworks .card-wrapper .card .year {
@@ -1293,80 +1367,6 @@ footer .footer-insta img {
     -webkit-transform: translateY(-400px);
             transform: translateY(-400px);
   }
-}
-.painting .followUs {
-  border: 1px solid var(--black);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 30px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow: hidden;
-  width: 300px;
-  margin: 0 auto;
-}
-.painting .followUs .followUs-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-bottom: 1px solid var(--black);
-  height: 105px;
-}
-.painting .followUs .followUs-container p {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 150px;
-  height: 100%;
-  height: 105px;
-  background: rgb(255, 254, 52);
-  background: radial-gradient(circle, rgb(255, 254, 52) 23%, rgb(53, 242, 247) 54%, rgb(240, 73, 5) 99%);
-  -webkit-filter: hue-rotate(180deg);
-          filter: hue-rotate(180deg);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-.painting .followUs .followUs-container p:hover {
-  -webkit-filter: hue-rotate(0deg);
-          filter: hue-rotate(0deg);
-}
-.painting .followUs .followUs-container img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 150px;
-  height: 105px;
-  -webkit-filter: saturate(120%);
-          filter: saturate(120%);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-.painting .followUs .followUs-container img:hover {
-  -webkit-filter: saturate(300%);
-          filter: saturate(300%);
-}
-.painting .followUs .footer-insta {
-  padding: 10px;
 }
 
 /* ===============================================
