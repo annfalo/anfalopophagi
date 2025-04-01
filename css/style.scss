@@ -407,6 +407,8 @@ header {
 # すべてを見る
 =============================================== */
 .all-view {
+    display: block;
+    /* この行を追加 */
     transform: translateX(-50vw);
     background: url(../icon/kami.png) no-repeat center center/contain;
     background-position: 65% center;
@@ -427,6 +429,7 @@ header {
     img {
         width: 20vw;
         max-width: 200px;
+        margin-left: 1.5rem;
         @include hover-scale(1.1, .1s);
 
         @media screen and (max-width: 768px) {
@@ -439,28 +442,22 @@ header {
 .see-all {
     position: relative;
     transition: .3s ease;
+    display: block;
+    // color: var(--dark-gray);
 
-    @media screen and (max-width: 768px) {
+    @include mobile {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-    }
-
-    span {
-        margin-right: 2.3rem;
-        color: var(--dark-gray);
-
-        @media screen and (max-width: 768px) {
-            font-size: 12px;
-        }
+        font-size: 12px;
     }
 
     &:before {
         content: "";
         position: absolute;
         top: calc(180% - 3.5px);
-        right: -50px;
+        right: 20vw;
         width: 30px;
         height: 18px;
         border-right: 3px solid currentColor;
@@ -476,7 +473,7 @@ header {
         content: "";
         position: absolute;
         top: 180%;
-        right: -50px;
+        right: 20vw;
         width: 80px;
         height: 3px;
         background-color: currentColor;
@@ -487,7 +484,6 @@ header {
             right: -20%;
         }
     }
-
 
     &:hover::after {
         right: -100px;
@@ -505,6 +501,7 @@ header {
         }
     }
 }
+
 
 /* ===============================================
 # ファンシー
@@ -739,8 +736,13 @@ header {
             }
 
             .yellow {
-                animation: yellow .7s steps(1) infinite;
+                animation: yellow .8s steps(1) infinite;
                 width: 35vw;
+
+                &:hover {
+                    animation: none;
+                    background: url(../omen/yellowheadgear02.webp) no-repeat center center/contain;
+                }
 
                 @include mobile {
                     width: 80vw;
@@ -750,6 +752,11 @@ header {
 
             .tengu {
                 animation: tengu .6s steps(1) infinite;
+
+                &:hover {
+                    animation: none;
+                    background: url(../omen/tengumen02.webp) no-repeat center center/contain;
+                }
             }
         }
     }

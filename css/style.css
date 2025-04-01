@@ -472,6 +472,8 @@ header .to-top:hover {
 # すべてを見る
 =============================================== */
 .all-view {
+  display: block;
+  /* この行を追加 */
   -webkit-transform: translateX(-50vw);
           transform: translateX(-50vw);
   background: url(../icon/kami.png) no-repeat center center/contain;
@@ -503,6 +505,7 @@ header .to-top:hover {
 .all-view img {
   width: 20vw;
   max-width: 200px;
+  margin-left: 1.5rem;
   -webkit-transition: -webkit-transform 0.1s ease-out;
   transition: -webkit-transform 0.1s ease-out;
   transition: transform 0.1s ease-out;
@@ -523,8 +526,9 @@ header .to-top:hover {
   position: relative;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+  display: block;
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 719px) {
   .see-all {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -539,14 +543,6 @@ header .to-top:hover {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-}
-.see-all span {
-  margin-right: 2.3rem;
-  color: var(--dark-gray);
-}
-@media screen and (max-width: 768px) {
-  .see-all span {
     font-size: 12px;
   }
 }
@@ -554,7 +550,7 @@ header .to-top:hover {
   content: "";
   position: absolute;
   top: calc(180% - 3.5px);
-  right: -50px;
+  right: 20vw;
   width: 30px;
   height: 18px;
   border-right: 3px solid currentColor;
@@ -574,7 +570,7 @@ header .to-top:hover {
   content: "";
   position: absolute;
   top: 180%;
-  right: -50px;
+  right: 20vw;
   width: 80px;
   height: 3px;
   background-color: currentColor;
@@ -858,9 +854,14 @@ header .to-top:hover {
           animation: toubu 0.5s steps(1) infinite;
 }
 #omen .card-wrapper .card .yellow {
-  -webkit-animation: yellow 0.7s steps(1) infinite;
-          animation: yellow 0.7s steps(1) infinite;
+  -webkit-animation: yellow 0.8s steps(1) infinite;
+          animation: yellow 0.8s steps(1) infinite;
   width: 35vw;
+}
+#omen .card-wrapper .card .yellow:hover {
+  -webkit-animation: none;
+          animation: none;
+  background: url(../omen/yellowheadgear02.webp) no-repeat center center/contain;
 }
 @media (max-width: 719px) {
   #omen .card-wrapper .card .yellow {
@@ -871,6 +872,11 @@ header .to-top:hover {
 #omen .card-wrapper .card .tengu {
   -webkit-animation: tengu 0.6s steps(1) infinite;
           animation: tengu 0.6s steps(1) infinite;
+}
+#omen .card-wrapper .card .tengu:hover {
+  -webkit-animation: none;
+          animation: none;
+  background: url(../omen/tengumen02.webp) no-repeat center center/contain;
 }
 
 /* ===============================================
