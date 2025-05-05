@@ -998,6 +998,18 @@ footer .logo img {
 footer .footer-insta img {
   width: 50px;
 }
+footer .link-hp {
+  display: block;
+}
+footer .link-hp p {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.3rem 3rem;
+  border: 1px solid var(--black);
+  background-color: var(--light-gray);
+  border-radius: 50px;
+  font-size: 12px;
+}
 footer .followUs {
   border: 1px solid var(--black);
   display: -webkit-box;

@@ -855,6 +855,20 @@ footer {
         }
     }
 
+    .link-hp {
+        display: block;
+
+        p {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: .3rem 3rem;
+            border: 1px solid var(--black);
+            background-color: var(--light-gray);
+            border-radius: 50px;
+            font-size: 12px;
+        }
+    }
+
     .followUs {
         border: 1px solid var(--black);
         display: flex;
