@@ -170,13 +170,13 @@ header .gnav-wrapper .icon-wrapper .contact {
 }
 header .gnav-wrapper .icon-wrapper .instagram p,
 header .gnav-wrapper .icon-wrapper .contact p {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
   margin-top: -1.2rem;
   text-align: center;
 }
 header .gnav-wrapper .icon-wrapper .instagram {
-  top: -180px;
+  top: -150px;
   left: -80px;
   -webkit-transform: rotate(-15deg);
           transform: rotate(-15deg);
@@ -187,9 +187,12 @@ header .gnav-wrapper .icon-wrapper .instagram {
     left: -30px;
   }
 }
+header .gnav-wrapper .icon-wrapper .instagram p {
+  margin-left: -7rem;
+}
 header .gnav-wrapper .icon-wrapper .instagram img {
   width: 40vw;
-  max-width: 400px;
+  max-width: 300px;
 }
 @media (max-width: 719px) {
   header .gnav-wrapper .icon-wrapper .instagram img {
@@ -199,7 +202,7 @@ header .gnav-wrapper .icon-wrapper .instagram img {
 }
 header .gnav-wrapper .icon-wrapper .contact {
   left: -20px;
-  top: 100px;
+  top: 90px;
   -webkit-transform: rotate(20deg);
           transform: rotate(20deg);
 }
@@ -211,7 +214,7 @@ header .gnav-wrapper .icon-wrapper .contact {
 }
 header .gnav-wrapper .icon-wrapper .contact p {
   margin-top: 0.3rem;
-  margin-left: -1.5rem;
+  margin-left: 1.8rem;
 }
 @media (max-width: 719px) {
   header .gnav-wrapper .icon-wrapper .contact p {
@@ -220,7 +223,7 @@ header .gnav-wrapper .icon-wrapper .contact p {
 }
 header .gnav-wrapper .icon-wrapper .contact img {
   width: 15vw;
-  max-width: 200px;
+  max-width: 100px;
 }
 header .gnav-wrapper .hamburger {
   display: none;
@@ -426,8 +429,9 @@ header .to-top:hover {
   background: url(../icon/mimizu1.png) no-repeat center center/contain;
   width: 20vw;
   height: 15vw;
+  max-width: 200px;
   position: fixed;
-  bottom: 0;
+  bottom: -18px;
   left: 20px;
   z-index: 888888;
 }
@@ -646,7 +650,8 @@ header .to-top:hover {
 #Drawings,
 #omen,
 #external,
-#contact {
+#contact,
+#exhibition {
   margin: 30vh 2rem 0;
   padding-bottom: 12vh;
   text-align: center;
@@ -657,7 +662,8 @@ header .to-top:hover {
 #Drawings:after,
 #omen:after,
 #external:after,
-#contact:after {
+#contact:after,
+#exhibition:after {
   content: "";
   width: 100%;
   height: 8%;
@@ -671,7 +677,8 @@ header .to-top:hover {
   #Drawings:after,
   #omen:after,
   #external:after,
-  #contact:after {
+  #contact:after,
+  #exhibition:after {
     background-size: cover;
     height: 120px;
   }
@@ -681,7 +688,8 @@ header .to-top:hover {
   #Drawings,
   #omen,
   #external,
-  #contact {
+  #contact,
+  #exhibition {
     margin: 30vh 0;
   }
 }
@@ -1435,6 +1443,91 @@ footer .followUs .footer-insta {
   .contact .form-wrapper .form .form-iframe {
     height: 2000px;
   }
+}
+
+/* ===============================================
+# 展示・プロフィールページ
+=============================================== */
+#exhibition .profile-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 70px;
+  border-top: 1px solid #000;
+}
+#exhibition .profile-container .profile-img img {
+  width: 200px;
+}
+#exhibition .profile-container .profile-img p {
+  font-size: 10px;
+  margin-top: 0.8rem;
+}
+#exhibition .profile-container .profile-text {
+  -moz-text-align-last: left;
+       text-align-last: left;
+  font-size: 14px;
+}
+#exhibition .profile-container .profile-text h5 {
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+#exhibition .profile-container .profile-text h5 b {
+  margin-right: 0.5rem;
+}
+#exhibition .profile-container .profile-text h4 {
+  margin-top: 1rem;
+}
+#exhibition .profile-container .profile-text h4:before {
+  content: "〈";
+}
+#exhibition .profile-container .profile-text h4:after {
+  content: "〉";
+}
+#exhibition .profile-container .profile-text ul {
+  line-height: 1.7rem;
+}
+#exhibition .profile-container .profile-text ul li .year {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+#exhibition .card-wrapper {
+  margin: 80px 0px 200px;
+  padding: 80px 30px;
+}
+#exhibition .card-wrapper .card {
+  border: none;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+#exhibition .card-wrapper .card img {
+  border: 3px solid var(--black);
+  border-radius: 8px;
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (hover: hover) {
+  #exhibition .card-wrapper .card img:hover {
+    border: 3px solid var(--yellow);
+  }
+}
+
+.blemmyae {
+  text-align: center;
+  -webkit-animation: katakata 0.1s linear infinite;
+          animation: katakata 0.1s linear infinite;
+}
+.blemmyae img {
+  width: 180px;
 }
 
 /* ===============================================

@@ -117,7 +117,7 @@ header {
                 color: var(--red);
 
                 p {
-                    font-size: 11px;
+                    font-size: 10px;
                     font-weight: bold;
                     margin-top: -1.2rem;
                     text-align: center;
@@ -125,7 +125,7 @@ header {
             }
 
             .instagram {
-                top: -180px;
+                top: -150px;
                 left: -80px;
                 transform: rotate(-15deg);
 
@@ -134,9 +134,13 @@ header {
                     left: -30px;
                 }
 
+                p {
+                    margin-left: -7rem;
+                }
+
                 img {
                     width: 40vw;
-                    max-width: 400px;
+                    max-width: 300px;
 
                     @include mobile {
                         width: 30vw;
@@ -147,7 +151,7 @@ header {
 
             .contact {
                 left: -20px;
-                top: 100px;
+                top: 90px;
                 transform: rotate(20deg);
 
                 @include mobile {
@@ -157,7 +161,7 @@ header {
 
                 p {
                     margin-top: .3rem;
-                    margin-left: -1.5rem;
+                    margin-left: 1.8rem;
 
                     @include mobile {
                         margin-left: .5rem;
@@ -166,7 +170,7 @@ header {
 
                 img {
                     width: 15vw;
-                    max-width: 200px;
+                    max-width: 100px;
                 }
             }
         }
@@ -358,8 +362,9 @@ header {
     background: url(../icon/mimizu1.png) no-repeat center center/contain;
     width: 20vw;
     height: 15vw;
+    max-width: 200px;
     position: fixed;
-    bottom: 0;
+    bottom: -18px;
     left: 20px;
     z-index: 888888;
 
@@ -554,7 +559,8 @@ header {
 #Drawings,
 #omen,
 #external,
-#contact {
+#contact,
+#exhibition {
     margin: 30vh 2rem 0;
     padding-bottom: 12vh;
     text-align: center;
@@ -1226,6 +1232,107 @@ footer {
                 }
             }
         }
+    }
+}
+
+/* ===============================================
+# 展示・プロフィールページ
+=============================================== */
+#exhibition {
+
+    .profile-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-top: 70px;
+        border-top: 1px solid #000;
+
+        .profile-img {
+            img {
+                width: 200px;
+            }
+
+            p {
+                font-size: 10px;
+                margin-top: .8rem;
+            }
+        }
+
+        .profile-text {
+            text-align-last: left;
+            font-size: 14px;
+
+            h5 {
+                font-size: 22px;
+                margin-bottom: 1rem;
+
+                b {
+                    margin-right: .5rem;
+                }
+            }
+
+            h4 {
+                margin-top: 1rem;
+
+                &:before {
+                    content: "〈";
+                }
+
+                &:after {
+                    content: "〉";
+                }
+            }
+
+            ul {
+                line-height: 1.7rem;
+
+                li {
+                    .year {
+                        margin-right: 1rem;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .card-wrapper {
+        margin: 80px 0px 200px;
+        padding: 80px 30px;
+
+        .card {
+            border: none;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 0;
+            padding-left: 0;
+
+            img {
+                border: 3px solid var(--black);
+                border-radius: 8px;
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+
+                @media (hover: hover) {
+                    &:hover {
+                        border: 3px solid var(--yellow);
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.blemmyae {
+    text-align: center;
+    animation: katakata .1s linear infinite;
+
+    img {
+        width: 180px;
     }
 }
 
