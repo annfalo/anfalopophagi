@@ -1002,6 +1002,7 @@ footer {
 }
 footer .logo img {
   width: 30vw;
+  margin-bottom: 20px;
 }
 footer .footer-insta img {
   width: 50px;
@@ -1036,7 +1037,7 @@ footer .followUs {
           flex-direction: column;
   overflow: hidden;
   width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem;
 }
 footer .followUs .followUs-container {
   display: -webkit-box;
@@ -1461,8 +1462,22 @@ footer .followUs .footer-insta {
   padding-top: 70px;
   border-top: 1px solid #000;
 }
+@media (max-width: 719px) {
+  #exhibition .profile-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 50px;
+  }
+}
 #exhibition .profile-container .profile-img img {
   width: 200px;
+}
+@media (max-width: 719px) {
+  #exhibition .profile-container .profile-img img {
+    height: 300px;
+  }
 }
 #exhibition .profile-container .profile-img p {
   font-size: 10px;
@@ -1471,11 +1486,11 @@ footer .followUs .footer-insta {
 #exhibition .profile-container .profile-text {
   -moz-text-align-last: left;
        text-align-last: left;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.469rem + 0.63vw, 0.938rem);
 }
 #exhibition .profile-container .profile-text h5 {
-  font-size: 22px;
-  margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 0.5rem + 1.67vw, 1.75rem);
+  margin-bottom: 2.5rem;
 }
 #exhibition .profile-container .profile-text h5 b {
   margin-right: 0.5rem;
@@ -1507,6 +1522,12 @@ footer .followUs .footer-insta {
   margin-bottom: 0;
   padding-left: 0;
 }
+@media (max-width: 719px) {
+  #exhibition .card-wrapper .card {
+    width: 100px;
+    height: 100px;
+  }
+}
 #exhibition .card-wrapper .card img {
   border: 3px solid var(--black);
   border-radius: 8px;
@@ -1514,6 +1535,13 @@ footer .followUs .footer-insta {
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media (max-width: 719px) {
+  #exhibition .card-wrapper .card img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--black);
+  }
 }
 @media (hover: hover) {
   #exhibition .card-wrapper .card img:hover {

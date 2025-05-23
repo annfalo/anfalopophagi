@@ -852,6 +852,7 @@ footer {
     .logo {
         img {
             width: 30vw;
+            margin-bottom: 20px;
         }
     }
 
@@ -884,7 +885,7 @@ footer {
         flex-direction: column;
         overflow: hidden;
         width: 300px;
-        margin: 0 auto;
+        margin: 0 auto .5rem;
 
         .followUs-container {
             display: flex;
@@ -1247,24 +1248,34 @@ footer {
         padding-top: 70px;
         border-top: 1px solid #000;
 
+        @include mobile {
+            flex-direction: column;
+            gap: 50px;
+        }
+
         .profile-img {
             img {
                 width: 200px;
+
+                @include mobile {
+                    height: 300px;
+                }
             }
 
             p {
                 font-size: 10px;
                 margin-top: .8rem;
             }
+
         }
 
         .profile-text {
             text-align-last: left;
-            font-size: 14px;
+            font-size: clamp(0.75rem, 0.469rem + 0.63vw, 0.938rem);
 
             h5 {
-                font-size: 22px;
-                margin-bottom: 1rem;
+                font-size: clamp(1.25rem, 0.5rem + 1.67vw, 1.75rem);
+                margin-bottom: 2.5rem;
 
                 b {
                     margin-right: .5rem;
@@ -1309,12 +1320,24 @@ footer {
             margin-bottom: 0;
             padding-left: 0;
 
+            @include mobile {
+                width: 100px;
+                height: 100px;
+            }
+
             img {
                 border: 3px solid var(--black);
                 border-radius: 8px;
                 width: 150px;
                 height: 150px;
                 object-fit: cover;
+
+                @include mobile {
+                    width: 100px;
+                    height: 100px;
+                    border: 2px solid var(--black);
+
+                }
 
                 @media (hover: hover) {
                     &:hover {
