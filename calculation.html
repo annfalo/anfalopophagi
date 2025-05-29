@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>販売価格シミュレーター</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        label,
+        input {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>販売価格シミュレーター</h1>
+
+    <label for="desiredAmount">手取りの消費税込み金額 (円):</label>
+    <input type="number" id="desiredAmount" value="10000" min="1" />
+
+    <label for="commissionRate">ギャラリー手数料率 (%):</label>
+    <input type="number" id="commissionRate" value="40" min="0" max="100" />
+
+    <label for="taxRate">消費税率 (%):</label>
+    <input type="number" id="taxRate" value="10" min="0" max="100" />
+
+    <button onclick="calculate()">計算する</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        // 10円未満を切り上げる関数
+        function roundUp10yen(value) {
+            return Math.ceil(value / 100) * 100;
+        }
+
+        function calculate() {
+            const X = Number(document.getElementById('desiredAmount').value);
+            const commission = Number(document.getElementById('commissionRate').value) / 100;
+            const tax = Number(document.getElementById('taxRate').value) / 100;
+
+            if (X <= 0 || commission < 0 || commission > 1 || tax < 0 || tax > 1) {
+                document.getElementById('result').textContent = '正しい数値を入力してください。';
+                return;
+            }
+
+            let taxExcludedPrice = X / ((1 + tax) * (1 - commission));
+            let taxIncludedPrice = taxExcludedPrice * (1 + tax);
+
+            // 10円未満は切り上げる
+            taxExcludedPrice = roundUp10yen(taxExcludedPrice);
+            taxIncludedPrice = roundUp10yen(taxIncludedPrice);
+
+            document.getElementById('result').innerHTML = `
+    <p>提示する税抜価格: <strong>${taxExcludedPrice} 円</strong></p>
+    <p>お客さんが支払う税込価格: <strong>${taxIncludedPrice} 円</strong></p>
+  `;
+        }
+
+    </script>
+</body>
+
+</html>
