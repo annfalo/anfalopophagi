@@ -69,23 +69,20 @@
                 return;
             }
 
-            // 販売価格（税抜）を計算
             const basePrice = X / ((1 - feeRate / 100) * (1 + taxRate / 100));
-            const roundedPrice = Math.ceil(basePrice / 100) * 100; // 100円単位に切り上げ
+            const roundedPrice = Math.ceil(basePrice / 100) * 100; // 税抜価格を100円単位切り上げ
+            const priceWithTax = Math.ceil(roundedPrice * (1 + taxRate / 100) / 100) * 100; // 税込価格も100円単位切り上げ
 
-            // 税込み価格
-            const priceWithTax = Math.round(roundedPrice * (1 + taxRate / 100));
-
-            // 実際に手元に入る金額
-            const received = Math.floor((roundedPrice * (1 + taxRate / 100)) * (1 - feeRate / 100));
+            const received = Math.floor(priceWithTax * (1 - feeRate / 100)); // 手元に入る金額は税込価格×（1-手数料）
 
             document.getElementById('result').style.display = 'block';
             document.getElementById('result').innerHTML = `
         <p><strong>税抜販売価格：</strong>¥${roundedPrice.toLocaleString()}</p>
         <p><strong>税込販売価格：</strong>¥${priceWithTax.toLocaleString()}</p>
         <p><strong>実際に手元に入る金額：</strong>¥${received.toLocaleString()}</p>
-      `;
+    `;
         }
+
     </script>
 </body>
 
