@@ -53,21 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //コンタクトdlの色をかえる
-    gsap.utils.toArray(".contact-wrapper dl").forEach((dl) => {
-        gsap.to(dl, {
-            scrollTrigger: {
-                trigger: dl,
-                start: "top center",
-                end: "bottom center",
-                toggleActions: "play reverse play reverse",
-                invalidateOnRefresh: true,
-            },
-            backgroundColor: "#f6ea25",
-            duration: .5,
-            ease: "none",
-        });
+    // gsap.utils.toArray(".contact-wrapper dl").forEach((dl) => {
+    //     gsap.to(dl, {
+    //         scrollTrigger: {
+    //             trigger: dl,
+    //             start: "top center",
+    //             end: "bottom center",
+    //             toggleActions: "play reverse play reverse",
+    //             invalidateOnRefresh: true,
+    //         },
+    //         backgroundColor: "#f6ea25",
+    //         duration: .5,
+    //         ease: "none",
+    //     });
 
-    });
+    // });
     //全てを見るボタンのスライド
     const isMobile = window.innerWidth < 720;
 
