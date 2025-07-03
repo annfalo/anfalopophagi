@@ -789,7 +789,9 @@ header {
             font-weight: 600;
             margin-bottom: 2rem;
             @include maru-btn;
+            background-color: var(--yellow);
         }
+
 
         .btn {
             padding-top: 2rem;
@@ -800,9 +802,13 @@ header {
                 justify-content: center;
                 align-items: center;
                 font-size: .8rem;
+                animation: tikatika .2s alternate infinite;
+
+
 
                 img {
                     width: 300px;
+                    @include hover-scale($scale: 1.05, $duration: 0s);
 
                     @include mobile {
                         width: 180px;
@@ -1491,5 +1497,16 @@ footer {
 
     75% {
         background: url(../omen/tengumen04.webp) no-repeat center center/contain;
+    }
+}
+
+@keyframes tikatika {
+    0% {
+        color: var(--red);
+    }
+
+
+    100% {
+        color: var(--blue);
     }
 }

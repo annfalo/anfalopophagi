@@ -913,6 +913,7 @@ header .to-top:hover {
   border: 1px solid #030201;
   padding: 0.5rem 1.8rem;
   border-radius: 30px;
+  background-color: var(--yellow);
 }
 #contact dl .btn {
   padding-top: 2rem;
@@ -932,9 +933,19 @@ header .to-top:hover {
       -ms-flex-align: center;
           align-items: center;
   font-size: 0.8rem;
+  -webkit-animation: tikatika 0.2s alternate infinite;
+          animation: tikatika 0.2s alternate infinite;
 }
 #contact dl .btn a img {
   width: 300px;
+  -webkit-transition: -webkit-transform 0s ease-out;
+  transition: -webkit-transform 0s ease-out;
+  transition: transform 0s ease-out;
+  transition: transform 0s ease-out, -webkit-transform 0s ease-out;
+}
+#contact dl .btn a img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 @media (max-width: 719px) {
   #contact dl .btn a img {
@@ -1748,5 +1759,21 @@ footer .followUs .footer-insta {
   }
   75% {
     background: url(../omen/tengumen04.webp) no-repeat center center/contain;
+  }
+}
+@-webkit-keyframes tikatika {
+  0% {
+    color: var(--red);
+  }
+  100% {
+    color: var(--blue);
+  }
+}
+@keyframes tikatika {
+  0% {
+    color: var(--red);
+  }
+  100% {
+    color: var(--blue);
   }
 }/*# sourceMappingURL=style.css.map */
