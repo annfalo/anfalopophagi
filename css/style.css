@@ -1520,6 +1520,11 @@ footer .followUs .footer-insta {
   margin-right: 1rem;
   font-weight: bold;
 }
+#exhibition .profile-container .profile-text ul li a {
+  color: var(--blue);
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
 #exhibition .card-wrapper {
   margin: 80px 0px 200px;
   padding: 80px 30px;
