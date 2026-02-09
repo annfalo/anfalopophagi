@@ -344,3 +344,14 @@ saveButton.addEventListener("click", function () {
     link.download = "anfalopophagi.png";
     link.click();
 });
+
+// 右クリ
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    alert('こんにちは！');
+});
+// ドラッグ禁止（画像やリンク）
+document.addEventListener('dragstart', function (e) {
+    e.preventDefault();
+    alert('またきてね！');
+});
