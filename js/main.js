@@ -350,7 +350,7 @@ document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
     alert('こんにちは！');
 });
-// ドラッグ禁止（画像やリンク）
+// ドラッグ禁止
 document.addEventListener('dragstart', function (e) {
     e.preventDefault();
     alert('またきてね！');
