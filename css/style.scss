@@ -1303,12 +1303,15 @@ footer {
 # 展示・プロフィールページ
 =============================================== */
 #exhibition {
+    @include mobile {
+        margin-top: 88px;
+    }
 
     .profile-container {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        padding-top: 70px;
+        padding: 70px 1em 0;
         border-top: 1px solid #000;
 
         @include mobile {
@@ -1381,6 +1384,10 @@ footer {
     .card-wrapper {
         margin: 80px 0px 200px;
         padding: 80px 30px;
+
+        @include mobile {
+            padding: 0 1em;
+        }
 
         .card {
             border: none;

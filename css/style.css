@@ -40,7 +40,7 @@ body::-webkit-scrollbar-thumb {
   --black: #030201;
   --white: #fff;
   --font-jp: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-  --font-en: "Hind", "Helvetica", "Arial", sans-serif;
+  --font-en: "Hind", 'Helvetica', 'Arial', sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -79,11 +79,6 @@ img {
 /* ===============================================
 # ヘッダー
 =============================================== */
-header {
-  /* ===============================================
-  # トップへ戻る
-  =============================================== */
-}
 header .gnav-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -399,6 +394,11 @@ header .gnav-wrapper .gnav-list .preparing:after {
   header .gnav-wrapper .gnav-list .preparing {
     width: 100vw;
   }
+}
+header {
+  /* ===============================================
+  # トップへ戻る
+  =============================================== */
 }
 header .to-top {
   position: fixed;
@@ -1458,6 +1458,11 @@ footer .followUs .footer-insta {
 /* ===============================================
 # 展示・プロフィールページ
 =============================================== */
+@media (max-width: 719px) {
+  #exhibition {
+    margin-top: 88px;
+  }
+}
 #exhibition .profile-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1468,7 +1473,7 @@ footer .followUs .footer-insta {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 70px;
+  padding: 70px 1em 0;
   border-top: 1px solid #000;
 }
 @media (max-width: 719px) {
@@ -1528,6 +1533,11 @@ footer .followUs .footer-insta {
 #exhibition .card-wrapper {
   margin: 80px 0px 200px;
   padding: 80px 30px;
+}
+@media (max-width: 719px) {
+  #exhibition .card-wrapper {
+    padding: 0 1em;
+  }
 }
 #exhibition .card-wrapper .card {
   border: none;
