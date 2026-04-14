@@ -339,19 +339,19 @@ if (canvas) {
     }
 }
 
-// 右クリック禁止（ページ全体）
+// 右クリック
 document.body.oncontextmenu = function () {
     alert('こんにちは！いいことがあるといいね');
     return false;
 };
 
-// ドラッグ禁止（ページ全体）
+// ドラッグ
 document.body.ondragstart = function () {
     alert('またきてね！');
     return false;
 };
 
-// テキスト選択も禁止（ついでに）
+// テキスト選択
 document.body.onselectstart = function () {
     return false;
 };
