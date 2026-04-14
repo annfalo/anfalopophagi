@@ -217,141 +217,142 @@ window.onload = () => {
 };
 
 
-//キャンバス
 const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const clearButton = document.getElementById('clear');
-const colorPicker = document.getElementById("colorPicker");
-const lineWidthSlider = document.getElementById("hutosa");
-const rectangleButton = document.getElementById("rectangle");
-const circleButton = document.getElementById("circle");
-const triangleButton = document.getElementById("triangle");
-const penButton = document.getElementById('pen');
-const saveButton = document.getElementById("save");
 
-let drawing = false;
-let currentShape = null;
-let startX, startY;
-let shapes = [];
+if (canvas) {
 
-ctx.lineWidth = 3;
-ctx.lineCap = "round";
+    const ctx = canvas.getContext('2d');
+    const clearButton = document.getElementById('clear');
+    const colorPicker = document.getElementById("colorPicker");
+    const lineWidthSlider = document.getElementById("hutosa");
+    const rectangleButton = document.getElementById("rectangle");
+    const circleButton = document.getElementById("circle");
+    const triangleButton = document.getElementById("triangle");
+    const penButton = document.getElementById('pen');
+    const saveButton = document.getElementById("save");
 
-lineWidthSlider.value = ctx.lineWidth;
+    let drawing = false;
+    let currentShape = null;
+    let startX, startY;
 
-//getMousePos関数
-function getMousePos(event) {
-    const rect = canvas.getBoundingClientRect();
-    const touch = event.touches ? event.touches[0] : event;
-    return {
-        x: touch.clientX - rect.left,
-        y: touch.clientY - rect.top
-    };
-}
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
 
-// mousedown / touchstart イベント
-canvas.addEventListener("mousedown", startDrawing);
-canvas.addEventListener("touchstart", startDrawing);
+    lineWidthSlider.value = ctx.lineWidth;
 
-function startDrawing(event) {
-    event.preventDefault();
-    drawing = true;
-    const pos = getMousePos(event);
-    startX = pos.x;
-    startY = pos.y;
-
-    if (currentShape === 'rectangle' || currentShape === 'circle') {
-        return;
+    function getMousePos(event) {
+        const rect = canvas.getBoundingClientRect();
+        const touch = event.touches ? event.touches[0] : event;
+        return {
+            x: touch.clientX - rect.left,
+            y: touch.clientY - rect.top
+        };
     }
 
-    ctx.beginPath();
-    ctx.moveTo(pos.x, pos.y);
-}
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("touchstart", startDrawing);
 
-// mousemove / touchmove イベント
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("touchmove", draw);
+    function startDrawing(event) {
+        event.preventDefault();
+        drawing = true;
+        const pos = getMousePos(event);
+        startX = pos.x;
+        startY = pos.y;
 
-function draw(event) {
-    if (!drawing) return;
-    const pos = getMousePos(event);
+        if (currentShape === 'rectangle' || currentShape === 'circle') return;
 
-    if (currentShape === 'rectangle') {
         ctx.beginPath();
-        ctx.rect(startX, startY, pos.x - startX, pos.y - startY);
-        ctx.stroke();
-    } else if (currentShape === 'circle') {
-        ctx.beginPath();
-        const radius = Math.sqrt(Math.pow(pos.x - startX, 2) + Math.pow(pos.y - startY, 2));
-        ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
-        ctx.stroke();
-    } else if (currentShape === 'triangle') {
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.lineTo(startX * 2 - pos.x, pos.y);
-        ctx.closePath();
-        ctx.stroke();
-    } else {
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
+        ctx.moveTo(pos.x, pos.y);
+    }
+
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("touchmove", draw);
+
+    function draw(event) {
+        if (!drawing) return;
+        const pos = getMousePos(event);
+
+        if (currentShape === 'rectangle') {
+            ctx.beginPath();
+            ctx.rect(startX, startY, pos.x - startX, pos.y - startY);
+            ctx.stroke();
+        } else if (currentShape === 'circle') {
+            ctx.beginPath();
+            const radius = Math.sqrt((pos.x - startX) ** 2 + (pos.y - startY) ** 2);
+            ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+            ctx.stroke();
+        } else if (currentShape === 'triangle') {
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.lineTo(startX * 2 - pos.x, pos.y);
+            ctx.closePath();
+            ctx.stroke();
+        } else {
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+    }
+
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("touchend", stopDrawing);
+    canvas.addEventListener("mouseleave", stopDrawing);
+
+    function stopDrawing() {
+        drawing = false;
+        if (currentShape === 'rectangle' || currentShape === 'circle') {
+            ctx.beginPath();
+        }
+    }
+
+    if (colorPicker) {
+        colorPicker.addEventListener("input", () => {
+            ctx.strokeStyle = colorPicker.value;
+        });
+    }
+
+    if (lineWidthSlider) {
+        lineWidthSlider.addEventListener("input", () => {
+            ctx.lineWidth = lineWidthSlider.value;
+        });
+    }
+
+    if (rectangleButton) rectangleButton.addEventListener("click", () => currentShape = 'rectangle');
+    if (circleButton) circleButton.addEventListener("click", () => currentShape = 'circle');
+    if (triangleButton) triangleButton.addEventListener("click", () => currentShape = 'triangle');
+    if (penButton) penButton.addEventListener("click", () => currentShape = null);
+
+    if (clearButton) {
+        clearButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    }
+
+    if (saveButton) {
+        saveButton.addEventListener("click", () => {
+            const dataURL = canvas.toDataURL();
+            const link = document.createElement("a");
+            link.href = dataURL;
+            link.download = "anfalopophagi.png";
+            link.click();
+        });
     }
 }
 
-// mouseup / touchend イベント
-canvas.addEventListener("mouseup", stopDrawing);
-canvas.addEventListener("touchend", stopDrawing);
-canvas.addEventListener("mouseleave", stopDrawing);
+// 右クリック禁止（ページ全体）
+document.body.oncontextmenu = function () {
+    alert('こんにちは！いいことがあるといいね');
+    return false;
+};
 
-function stopDrawing() {
-    drawing = false;
-    if (currentShape === 'rectangle' || currentShape === 'circle') {
-        ctx.beginPath();
-    }
-}
-
-colorPicker.addEventListener("input", function () {
-    ctx.strokeStyle = colorPicker.value;
-});
-
-lineWidthSlider.addEventListener("input", function () {
-    ctx.lineWidth = lineWidthSlider.value;
-});
-
-rectangleButton.addEventListener("click", () => {
-    currentShape = 'rectangle';
-});
-
-circleButton.addEventListener("click", () => {
-    currentShape = 'circle';
-});
-
-triangleButton.addEventListener("click", () => {
-    currentShape = 'triangle';
-});
-
-clearButton.addEventListener('click', () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
-penButton.addEventListener("click", () => {
-    currentShape = null;
-});
-
-saveButton.addEventListener("click", function () {
-    const dataURL = canvas.toDataURL();
-    const link = document.createElement("a");
-    link.href = dataURL;
-    link.download = "anfalopophagi.png";
-    link.click();
-});
-
-// 右クリ
-document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-    alert('こんにちは！');
-});
-// ドラッグ禁止
-document.addEventListener('dragstart', function (e) {
-    e.preventDefault();
+// ドラッグ禁止（ページ全体）
+document.body.ondragstart = function () {
     alert('またきてね！');
-});
+    return false;
+};
+
+// テキスト選択も禁止（ついでに）
+document.body.onselectstart = function () {
+    return false;
+};
+
