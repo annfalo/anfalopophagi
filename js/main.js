@@ -155,6 +155,30 @@ document.addEventListener('DOMContentLoaded', function () {
         image.src = 'icon/mail.png';
     });
 });
+//手紙開く下段
+document.addEventListener('DOMContentLoaded', function () {
+    const image = document.getElementById('mail-open');
+
+    image.addEventListener('mouseover', function () {
+        image.src = 'icon/mail-open.png';
+    });
+
+    image.addEventListener('mouseout', function () {
+        image.src = 'icon/mail.png';
+    });
+});
+//バター溶ける
+document.addEventListener('DOMContentLoaded', function () {
+    const image = document.getElementById('butter');
+
+    image.addEventListener('mouseover', function () {
+        image.src = 'icon/cake.png';
+    });
+
+    image.addEventListener('mouseout', function () {
+        image.src = 'icon/rectangle.png';
+    });
+});
 //ちょうちょ
 document.addEventListener('DOMContentLoaded', function () {
     const image = document.getElementById('instagram');
@@ -214,9 +238,51 @@ window.onload = () => {
     document.body.addEventListener("click", () => {
         images.forEach(img => randomizePosition(img));
     });
+
+    let clickCount = 0;
+
+    const messages = [
+        "煙を確認",
+        "まだ見ていますか",
+        "漂流物を検知",
+        "森は連続しています",
+        "みつけられました",
+        "さらに奥があります",
+        "もう戻れません"
+    ];
+
+    document.body.addEventListener("click", () => {
+
+        clickCount++;
+
+        images.forEach(img => randomizePosition(img));
+
+        if (clickCount % 8 === 0) {
+
+            const index = (clickCount / 8 - 1) % messages.length;
+
+            const msg = document.createElement("div");
+
+            msg.innerText = messages[index];
+
+            msg.style.position = "fixed";
+            msg.style.bottom = "5px";
+            msg.style.right = "20px";
+            msg.style.color = "black";
+            msg.style.fontSize = "12px";
+            msg.style.opacity = "0.8";
+            msg.style.pointerEvents = "none";
+
+            document.body.appendChild(msg);
+
+            setTimeout(() => {
+                msg.remove();
+            }, 3000);
+        }
+    });
 };
 
-
+// お絵かき
 const canvas = document.getElementById('canvas');
 
 if (canvas) {
@@ -351,8 +417,19 @@ document.body.ondragstart = function () {
     return false;
 };
 
-// テキスト選択
-document.body.onselectstart = function () {
-    return false;
-};
+//tooltip
+document.querySelectorAll(".hover-target").forEach(target => {
 
+    const tooltip = target.querySelector(".tooltip");
+
+    target.addEventListener("mousemove", (e) => {
+
+        tooltip.style.opacity = "1";
+
+        tooltip.style.left = e.clientX + 8 + (Math.random() * 3) + "px"; tooltip.style.top = e.clientY + 8 + (Math.random() * 3) + "px";
+    });
+
+    target.addEventListener("mouseleave", () => {
+        tooltip.style.opacity = "0";
+    });
+});

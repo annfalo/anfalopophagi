@@ -844,12 +844,10 @@ header {
                 font-size: .8rem;
                 animation: tikatika .2s alternate infinite;
 
-
-
                 img {
                     width: 300px;
                     height: 300px;
-                    @include hover-scale($scale: 1.05, $duration: 0s);
+                    // @include hover-scale($scale: 1.05, $duration: 0s);
 
                     @include mobile {
                         width: 180px;
@@ -1002,14 +1000,17 @@ footer {
 .hituji {
     background: url(../icon/hituji.png) no-repeat center center/contain;
     width: auto;
+    max-width: 50vw;
     height: 28vw;
     margin: 0 auto;
     animation: hituji 1s steps(1) infinite;
+    position: relative;
 
     @media screen and (max-width: 768px) {
         height: 28vh;
     }
 }
+
 
 /* ===============================================
 # キャンバス
@@ -1564,4 +1565,14 @@ footer {
     100% {
         color: var(--blue);
     }
+}
+
+/* ===============================================
+# ツールチップ
+=============================================== */
+.tooltip {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    @include tip-btn;
 }
