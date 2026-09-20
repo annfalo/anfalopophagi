@@ -1792,4 +1792,6 @@ footer .followUs .footer-insta {
   padding: 0 0.3rem;
   border-radius: 2px;
   font-size: 12px;
+  -webkit-box-shadow: 3px 2px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 2px 0px rgba(0, 0, 0, 0.1);
 }/*# sourceMappingURL=style.css.map */
