@@ -23,6 +23,7 @@
             width: 100%;
             padding: 0.5rem;
             font-size: 1rem;
+            box-sizing: border-box;
         }
 
         button {
@@ -41,14 +42,17 @@
 </head>
 
 <body>
+
     <h1>販売価格計算ツール</h1>
+
     <label>
         手元に欲しい金額（税込）：
         <input type="number" id="desiredAmount" placeholder="例: 10000">
     </label>
     <label>
         手数料率（％）：
-        <input type="number" id="feeRate" placeholder="例: 40">
+        <!-- <input type="number" id="feeRate" placeholder="例: 40"> -->
+        <input type="number" id="feeRate" value="30">
     </label>
     <label>
         消費税率（％）：
@@ -59,29 +63,54 @@
     <div class="result" id="result" style="display: none;"></div>
 
     <script>
+
         function calculatePrice() {
+
             const X = parseFloat(document.getElementById('desiredAmount').value);
+
             const feeRate = parseFloat(document.getElementById('feeRate').value);
+
             const taxRate = parseFloat(document.getElementById('taxRate').value);
 
             if (isNaN(X) || isNaN(feeRate) || isNaN(taxRate)) {
+
                 alert("すべての項目を正しく入力してください。");
+
                 return;
             }
 
             const basePrice = X / ((1 - feeRate / 100) * (1 + taxRate / 100));
-            const roundedPrice = Math.ceil(basePrice / 100) * 100; // 税抜価格を100円単位切り上げ
-            const priceWithTax = Math.ceil(roundedPrice * (1 + taxRate / 100) / 100) * 100; // 税込価格も100円単位切り上げ
 
-            const received = Math.floor(priceWithTax * (1 - feeRate / 100)); // 手元に入る金額は税込価格×（1-手数料）
+            const roundedPrice = Math.ceil(basePrice / 100) * 100;
+
+            const priceWithTax =
+                Math.ceil(roundedPrice * (1 + taxRate / 100) / 100) * 100;
+
+            const received =
+                Math.floor(roundedPrice * (1 + taxRate / 100) * (1 - feeRate / 100));
 
             document.getElementById('result').style.display = 'block';
+
             document.getElementById('result').innerHTML = `
-        <p><strong>税抜販売価格：</strong>¥${roundedPrice.toLocaleString()}</p>
-        <p><strong>税込販売価格：</strong>¥${priceWithTax.toLocaleString()}</p>
-        <p><strong>実際に手元に入る金額：</strong>¥${received.toLocaleString()}</p>
-    `;
+    
+                <p><strong>税抜販売価格：</strong>¥${roundedPrice.toLocaleString()}</p>
+    
+                <p><strong>税込販売価格：</strong>¥${priceWithTax.toLocaleString()}</p>
+    
+                <p><strong>手数料：</strong>¥${Math.floor(
+                roundedPrice * feeRate / 100
+            ).toLocaleString()}</p>
+    
+                <p><strong>実際に手元に入る金額（税込）：</strong>¥${received.toLocaleString()}</p>
+    
+            `;
         }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                calculatePrice();
+            }
+        });
 
     </script>
 </body>
